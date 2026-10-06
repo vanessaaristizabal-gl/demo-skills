@@ -1,0 +1,18 @@
+{
+  "itemId": "BL-010",
+  "status": "draft",
+  "title": "Updating an order's status (counter staff)",
+  "audience": "Counter staff",
+  "summary": "How to move an order through the four statuses with one tap.",
+  "steps": [
+    "Move the order to the next status with one tap: Received, In the oven, Ready for pickup, Delivered."
+  ],
+  "sees": [
+    "The customer's status page shows the new status."
+  ],
+  "notes": [
+    "Screen names and button labels are added when the status page exists."
+  ],
+  "source": "BL-010 · acceptance criteria AC1 · 2026-10-06 meeting",
+  "updatedAt": "2026-10-06"
+}

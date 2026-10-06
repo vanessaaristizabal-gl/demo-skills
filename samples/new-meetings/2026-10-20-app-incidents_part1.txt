@@ -1,0 +1,24 @@
+Meeting: Incident review of the last week – Bakery Brasa (fictional data)
+Date: 2026-10-20
+Recording part: 1 of 1 (00:00–11:10)
+Attendees: Camila Torres (Product), Andrés Gil (Developer), Sofía Rojas (QA), Laura Peña (Operations)
+
+[00:00:20] Camila: Three incidents to review. Sofía, start.
+[00:00:30] Sofía: First, the app crashes when a customer opens the cart with more than twenty items. I reproduced it on the Android version. Open the cart with twenty-one items and the app closes.
+[00:01:05] Andrés: Does it happen on iPhone?
+[00:01:10] Sofía: No, I tried and it works.
+[00:01:25] Camila: How many customers have twenty-one items?
+[00:01:32] Laura: Corporate customers, a few every week. It is rare but they are important.
+[00:01:45] Camila: High priority then. Andrés, please take it.
+[00:01:52] Andrés: Taking it.
+[00:03:00] Sofía: Second, the same coupon still doubles the discount if the customer taps pay twice quickly. It is not the payment retry, it is a double tap.
+[00:03:20] Andrés: That is different from last time. The retry fix does not cover a double tap.
+[00:03:30] Camila: Then it is a new bug. Andrés, also yours, high.
+[00:03:40] Andrés: Understood.
+[00:05:10] Laura: Third, the order confirmation sometimes arrives twice by email.
+[00:05:20] Sofía: I could not reproduce it.
+[00:05:28] Andrés: Without steps I cannot do anything. Laura, when it happens again note the order number and the time.
+[00:05:40] Laura: Okay, I will note it.
+[00:05:48] Camila: Then no ticket until we have a case.
+[00:07:00] Camila: One more thing, a workaround for the cart crash while it is fixed: Laura, tell corporate customers to split orders in two.
+[00:07:12] Laura: I will tell them today.

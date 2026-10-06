@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-006",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.809Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Task",
+    "summary": "Update the catalog terms glossary",
+    "priority": "low",
+    "description": "## Context\nProposed owner (from the meeting): Camila Torres.\n\nThe glossary of catalog terms is out of date.\n\n## Objective and Deliverable\nAn updated glossary of catalog terms.\n\n## Acceptance Criteria\n- AC1: **Glossary updated** (Happy path) — The catalog terms in use are reviewed. Expected: the glossary lists the current catalog terms.\n\n## Completion Checklist\n- [ ] Deliverable completed.\n- [ ] Acceptance criteria met.\n- [ ] Required validation completed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-006",
+    "source": "2026-10-05 Weekly planning",
+    "validation": "AC1 is traceable to the earlier meeting note and is the only criterion its source supports."
+  }
+}

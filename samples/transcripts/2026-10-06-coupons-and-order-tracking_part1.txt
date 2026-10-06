@@ -1,0 +1,23 @@
+Meeting: Coupons and order tracking – Bakery Brasa (fictional data)
+Date: 2026-10-06
+Recording part: 1 of 2 (00:00–14:20)
+Attendees: Camila Torres (Product), Andrés Gil (Developer), Laura Peña (Operations), Sofía Rojas (QA)
+
+[00:00:12] Camila: Okay, we're recording. Goal for today: close the coupon rules before the weekend promo and decide what customers see after they pay.
+[00:00:31] Laura: From operations, the promo starts Saturday. If coupons break, the counter staff gets the angry calls.
+[00:01:05] Camila: Last week we decided coupons are one use per customer. I want to confirm what "one use" means. Andrés?
+[00:01:20] Andrés: Per customer account, not per device. We already identify customers by their account email, so the check is simple: look up the coupon redemptions for that account.
+[00:01:48] Laura: And guests who check out without an account?
+[00:01:55] Camila: Guests can't use coupons. They get a message asking them to sign in. That's decided.
+[00:02:30] Sofía: What does the customer see if the coupon was already used?
+[00:02:42] Camila: "This coupon was already used on your account." Plain message, no error code.
+[00:03:40] Andrés: One thing worries me. If the payment provider retries a charge, the cart could apply the coupon twice and the discount doubles.
+[00:03:58] Sofía: That already happened in staging last Thursday. The total went negative on a small order.
+[00:04:15] Camila: That's a risk we need to track. Andrés, you own the fix, and it's high priority because the promo starts Saturday.
+[00:04:30] Andrés: Fine. I'll make the redemption idempotent, keyed by order and coupon.
+[00:06:10] Laura: Separate topic. Customers ask "where is my order?" all day. Can we show a status page?
+[00:06:25] Camila: Yes. Statuses: Received, In the oven, Ready for pickup, Delivered. Updated by the counter staff with one tap.
+[00:07:02] Laura: I'll write the staff instructions once it exists. That is my action, medium priority.
+[00:07:30] Sofía: Do customers get a notification when it's Ready for pickup?
+[00:07:41] Camila: Not sure yet. Open question: email, SMS, or just the page? Let's park it, I'll ask the marketing lead.
+[00:08:05] Camila: For the backlog, let's use phases. Phase 1 is everything that has to be ready for Saturday's promo: the one-use coupon rule, the double-application fix, the status page, the staff instructions and the test cases. Phase 2 is what can wait: notifications, the CSV export and the loyalty points question.

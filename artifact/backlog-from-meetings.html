@@ -1,0 +1,562 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Backlog from Meetings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: notes feed on the left, backlog table on the right; ticket draft opens as a side sheet; second tab holds the architecture. */
+:root {
+  --bg: #f3f5f8;
+  --surface: #ffffff;
+  --ink: #1a2330;
+  --muted: #5a6776;
+  --line: #dce2ea;
+  --accent: #0f766e;
+  --accent-ink: #ffffff;
+  --accent-soft: #ddf2ef;
+  --hi-fg: #a8261c; --hi-bg: #fde9e7;
+  --mid-fg: #8a5508; --mid-bg: #fcefd3;
+  --lo-fg: #335b8c; --lo-bg: #e3edf8;
+  --shadow: 0 8px 28px rgba(20, 30, 45, .18);
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141b; --surface: #151d26; --ink: #e5ebf2; --muted: #93a1b1; --line: #26313d;
+    --accent: #3fc1b3; --accent-ink: #04201c; --accent-soft: #12332f;
+    --hi-fg: #ff9d93; --hi-bg: #3a1b18;
+    --mid-fg: #f0c470; --mid-bg: #352810;
+    --lo-fg: #a2c4f2; --lo-bg: #172a42;
+    --shadow: 0 8px 28px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141b; --surface: #151d26; --ink: #e5ebf2; --muted: #93a1b1; --line: #26313d;
+  --accent: #3fc1b3; --accent-ink: #04201c; --accent-soft: #12332f;
+  --hi-fg: #ff9d93; --hi-bg: #3a1b18;
+  --mid-fg: #f0c470; --mid-bg: #352810;
+  --lo-fg: #a2c4f2; --lo-bg: #172a42;
+  --shadow: 0 8px 28px rgba(0, 0, 0, .5);
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 14px; line-height: 1.5; padding-inline: 16px; padding-block: 20px 40px; }
+* { box-sizing: border-box; }
+.wrap { max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.top { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between; }
+.top h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+.top p { margin: 2px 0 0; color: var(--muted); }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); margin-left: 8px; vertical-align: middle; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 7px 12px; cursor: pointer; font-weight: 500; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn:disabled { opacity: .5; cursor: default; filter: none; }
+.btn.small { padding: 4px 9px; font-size: 13px; }
+
+.banner { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 10px 14px; color: var(--muted); }
+.banner strong { color: var(--ink); font-weight: 600; }
+
+.stats { display: flex; flex-wrap: wrap; gap: 4px 20px; color: var(--muted); }
+.stats b { color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
+.status { min-height: 21px; color: var(--accent); font-weight: 500; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 920px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
+.panel > h2 { margin: 0; padding: 12px 14px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+
+.note { border-bottom: 1px solid var(--line); padding: 10px 14px; }
+.note:last-child { border-bottom: 0; }
+.note summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; list-style: none; }
+.note summary::-webkit-details-marker { display: none; }
+.note .d { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.note .t { font-weight: 500; }
+.chip { font-size: 11px; font-weight: 500; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.chip.pending { background: var(--mid-bg); color: var(--mid-fg); }
+.note pre { margin: 8px 0 2px; white-space: pre-wrap; font-family: var(--font-mono); font-size: 12px; line-height: 1.55; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px; overflow-x: auto; }
+.note .meta { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+
+.rules { padding: 10px 14px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--line); }
+.rules code { font-family: var(--font-mono); color: var(--ink); }
+
+.filters { display: flex; gap: 6px; }
+.filters button { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 2px 10px; cursor: pointer; font-size: 12px; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--muted); }
+.filters button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 760px; }
+th { text-align: left; font-size: 12px; font-weight: 500; color: var(--muted); padding: 8px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.id, td.src { font-family: var(--font-mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+td.item { min-width: 240px; }
+.type { font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+.prio { font-size: 12px; font-weight: 500; border-radius: 4px; padding: 1px 7px; white-space: nowrap; }
+.prio.high { background: var(--hi-bg); color: var(--hi-fg); }
+.prio.medium { background: var(--mid-bg); color: var(--mid-fg); }
+.prio.low { background: var(--lo-bg); color: var(--lo-fg); }
+.new { margin-left: 8px; font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; }
+.key { font-family: var(--font-mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 3px 8px; cursor: pointer; }
+.empty { padding: 24px 14px; color: var(--muted); }
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); }
+.tabs button { border: 0; background: transparent; padding: 8px 14px; cursor: pointer; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.diagram { padding: 14px; overflow-x: auto; }
+.diagram svg { display: block; min-width: 720px; width: 100%; height: auto; }
+.n-box { fill: var(--surface); stroke: var(--ink); stroke-width: 1.25; }
+.n-box.live { stroke: var(--accent); }
+.n-box.plan { stroke: var(--muted); stroke-dasharray: 5 4; }
+.n-box.gate { stroke: var(--accent); stroke-width: 3; fill: var(--accent-soft); }
+.n-box.back { stroke-width: .75; opacity: .7; }
+.n-title { font: 600 13px var(--font-body); fill: var(--ink); }
+.n-sub { font: 400 11px var(--font-body); fill: var(--muted); }
+.n-badge { fill: var(--accent); }
+.n-badge-t { font: 600 10px var(--font-mono); fill: var(--accent-ink); text-anchor: middle; }
+.edge { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.edge.dash { stroke-dasharray: 4 4; }
+.arrowhead { fill: var(--muted); }
+.lbl-svg { font: 400 11px var(--font-body); fill: var(--muted); text-anchor: middle; }
+.bar { fill: var(--bg); stroke: var(--line); stroke-width: 1.25; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0 14px 14px; color: var(--muted); font-size: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 22px; height: 12px; border-radius: 3px; border: 1.5px solid var(--accent); background: var(--surface); }
+.sw.plan { border-color: var(--muted); border-style: dashed; }
+.sw.gate { border-width: 3px; background: var(--accent-soft); }
+.concepts { list-style: none; margin: 0; padding: 4px 0; }
+.concepts li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.concepts li:last-child { border-bottom: 0; }
+.concepts .nb { font-family: var(--font-mono); font-size: 11px; font-weight: 600; background: var(--accent); color: var(--accent-ink); border-radius: 999px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+.concepts b { font-weight: 600; }
+.concepts p { margin: 2px 0 0; color: var(--muted); }
+.log { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.log:last-child { border-bottom: 0; }
+.log .d { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 920px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.next { margin: 0; padding: 10px 14px 12px 32px; color: var(--muted); }
+.next li { margin: 6px 0; }
+.next b { color: var(--ink); font-weight: 600; }
+
+.backdrop { position: fixed; inset: 0; background: rgba(10, 15, 22, .45); z-index: 10; }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(480px, 100%); background: var(--surface); border-left: 1px solid var(--line); box-shadow: var(--shadow); z-index: 11; display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); }
+.sheet header { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.sheet h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.sheet .body { padding: 14px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; flex: 1; min-width: 0; }
+.sheet footer { padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; }
+.review { background: var(--mid-bg); color: var(--mid-fg); border-radius: 6px; padding: 8px 12px; font-size: 13px; }
+.done { background: var(--accent-soft); color: var(--accent); }
+.field label, .field .lbl { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+.field input, .field select { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
+.field p { margin: 0; }
+.field ul { margin: 0; padding-left: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (prefers-reduced-motion: no-preference) { .sheet { animation: slide .18s ease-out; } @keyframes slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } } }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Backlog from meetings <span class="tag">fictional data</span></h1>
+      <p>Bakery Brasa, an online ordering app. Meeting notes become backlog items, and each item can become a ticket after human approval.</p>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="syncBtn" type="button"></button>
+      <button class="btn" id="resetBtn" type="button">Reset demo</button>
+    </div>
+  </div>
+
+  <div class="banner"><strong>All content is made up.</strong> It contains no real data from any project or client. The sync button simulates the daily review of meeting notes.</div>
+
+  <div class="stats" id="stats"></div>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+
+  <div class="tabs" role="tablist" aria-label="Views">
+    <button type="button" role="tab" id="tabBtnBacklog" aria-selected="true" aria-controls="viewBacklog" data-tab="Backlog">Backlog</button>
+    <button type="button" role="tab" id="tabBtnArch" aria-selected="false" aria-controls="viewArch" data-tab="Arch">Architecture</button>
+  </div>
+
+  <div id="viewArch" role="tabpanel" aria-labelledby="tabBtnArch" class="stack" hidden>
+    <section class="panel" aria-labelledby="hDiag">
+      <h2 id="hDiag"><span>How the flow is orchestrated</span></h2>
+      <div class="diagram">
+        <svg viewBox="0 0 775 500" role="img" aria-labelledby="svgT svgD">
+          <title id="svgT">Multi-agent architecture with human approval</title>
+          <desc id="svgD">Meeting notes reach a coordinator, which hands the work to extractors running in parallel. A validator checks the output and, if it fails, sends back the specific error for a retry. A drafter without write access builds the ticket draft, a person approves it, and only then a writer creates the ticket. An audit log records every step.</desc>
+          <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="arrowhead"/></marker></defs>
+
+          <path class="edge" d="M170 100 H212" marker-end="url(#ah)"/>
+          <path class="edge" d="M365 100 H407" marker-end="url(#ah)"/>
+          <path class="edge" d="M560 100 H602" marker-end="url(#ah)"/>
+          <path class="edge" d="M680 140 V267" marker-end="url(#ah)"/>
+          <path class="edge" d="M605 310 H563" marker-end="url(#ah)"/>
+          <path class="edge" d="M410 310 H368" marker-end="url(#ah)"/>
+          <path class="edge" d="M215 310 H173" marker-end="url(#ah)"/>
+          <path class="edge dash" d="M680 60 V34 H485 V57" marker-end="url(#ah)"/>
+          <path class="edge dash" d="M485 350 V418"/>
+          <path class="edge dash" d="M290 350 V418"/>
+          <text class="lbl-svg" x="582" y="26">retry with the specific error</text>
+          <text class="lbl-svg" x="690" y="212" style="text-anchor:start">draft</text>
+
+          <rect class="n-box live back" x="428" y="42" width="150" height="80" rx="8"/>
+          <rect class="n-box live back" x="419" y="51" width="150" height="80" rx="8"/>
+
+          <rect class="n-box live" x="20" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="36" cy="80" r="9"/><text class="n-badge-t" x="36" y="83.5">1</text>
+          <text class="n-title" x="52" y="84">Meeting notes</text>
+          <text class="n-sub" x="34" y="106">fixed-format text</text>
+
+          <rect class="n-box plan" x="215" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="231" cy="80" r="9"/><text class="n-badge-t" x="231" y="83.5">2</text>
+          <text class="n-title" x="247" y="84">Coordinator</text>
+          <text class="n-sub" x="229" y="106">decides the split and</text>
+          <text class="n-sub" x="229" y="121">which subagent to use</text>
+
+          <rect class="n-box live" x="410" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="426" cy="80" r="9"/><text class="n-badge-t" x="426" y="83.5">3</text>
+          <text class="n-title" x="442" y="84">Extractors</text>
+          <text class="n-sub" x="424" y="106">one per note,</text>
+          <text class="n-sub" x="424" y="121">in parallel</text>
+
+          <rect class="n-box plan" x="605" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="621" cy="80" r="9"/><text class="n-badge-t" x="621" y="83.5">4</text>
+          <text class="n-title" x="637" y="84">Validator</text>
+          <text class="n-sub" x="619" y="106">schema and rules;</text>
+          <text class="n-sub" x="619" y="121">structured errors</text>
+
+          <rect class="n-box live" x="605" y="270" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="621" cy="290" r="9"/><text class="n-badge-t" x="621" y="293.5">5</text>
+          <text class="n-title" x="637" y="294">Drafter</text>
+          <text class="n-sub" x="619" y="316">builds the draft,</text>
+          <text class="n-sub" x="619" y="331">cannot create tickets</text>
+
+          <rect class="n-box gate" x="410" y="270" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="426" cy="290" r="9"/><text class="n-badge-t" x="426" y="293.5">6</text>
+          <text class="n-title" x="442" y="294">Human approval</text>
+          <text class="n-sub" x="424" y="316">reviews and edits</text>
+          <text class="n-sub" x="424" y="331">before any write</text>
+
+          <rect class="n-box live" x="215" y="270" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="231" cy="290" r="9"/><text class="n-badge-t" x="231" y="293.5">7</text>
+          <text class="n-title" x="247" y="294">Writer</text>
+          <text class="n-sub" x="229" y="316">only one with write</text>
+          <text class="n-sub" x="229" y="331">access; idempotent</text>
+
+          <rect class="n-box live" x="20" y="270" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="36" cy="290" r="9"/><text class="n-badge-t" x="36" y="293.5">8</text>
+          <text class="n-title" x="52" y="294">Ticket created</text>
+          <text class="n-sub" x="34" y="316">with a receipt: who</text>
+          <text class="n-sub" x="34" y="331">proposed, who approved</text>
+
+          <rect class="bar" x="20" y="420" width="735" height="62" rx="8"/>
+          <text class="n-title" x="36" y="446">Audit log</text>
+          <text class="n-sub" x="36" y="466">Every step is recorded: what the agent read, what it proposed, who approved and what changed.</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i class="sw"></i>Works in this demo, with simple rules and no generative AI</span>
+        <span><i class="sw plan"></i>Proposed design, not implemented in this demo</span>
+        <span><i class="sw gate"></i>Human control</span>
+      </div>
+    </section>
+
+    <div class="cols">
+      <section class="panel" aria-labelledby="hConc">
+        <h2 id="hConc"><span>Certification concept at each step</span></h2>
+        <ol class="concepts">
+          <li><span class="nb">2</span><div><b>The coordinator owns coverage.</b><p>If something is missing even though the subagents did their job, the root cause is how the coordinator split and assigned the work. It picks subagents per case instead of following a fixed pipeline.</p></div></li>
+          <li><span class="nb">3</span><div><b>Parallel work with labeled context.</b><p>Notes are independent, so they run at the same time and each extractor receives only its own. Every item travels with its source (note and date), like the Source column in the backlog.</p></div></li>
+          <li><span class="nb">4</span><div><b>Structured errors and informed retries.</b><p>A failure goes back to the extractor with the specific error, not a bare "try again". An error is never swallowed silently.</p></div></li>
+          <li><span class="nb">5</span><div><b>Restrict with permissions, not prompts.</b><p>The Drafter is never given the create-ticket tool (allowedTools). If you don't want it to use the hammer, don't hand it the hammer.</p></div></li>
+          <li><span class="nb">6</span><div><b>Human oversight before an external effect.</b><p>Creating a ticket changes someone else's system. Nothing is written until a person approves, and the person can correct the draft.</p></div></li>
+          <li><span class="nb">7</span><div><b>Idempotency and traceability.</b><p>The idempotency key stops the same item from being created twice. The audit log makes it possible to rebuild who proposed and who approved.</p></div></li>
+        </ol>
+      </section>
+      <div class="stack">
+        <section class="panel" aria-labelledby="hAudit">
+          <h2 id="hAudit"><span>Audit log for this session</span></h2>
+          <div id="audit"></div>
+        </section>
+        <section class="panel" aria-labelledby="hNext">
+          <h2 id="hNext"><span>Next steps for the dashed parts</span></h2>
+          <ol class="next">
+            <li><b>Source:</b> a Zoom connector over MCP supplies transcripts and summaries, tested only with a self-recorded meeting that has made-up content.</li>
+            <li><b>Coordinator and extractors:</b> a Claude Code or Agent SDK script that starts one subagent per transcript and returns JSON that follows the schema.</li>
+            <li><b>Validator:</b> schema and business-rule checks that return the specific error for a retry.</li>
+            <li><b>Writer:</b> the only component holding the ticketing tool, called after approval.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid" id="viewBacklog" role="tabpanel" aria-labelledby="tabBtnBacklog">
+    <section class="panel" aria-labelledby="hNotes">
+      <h2 id="hNotes"><span>Meeting notes</span></h2>
+      <div id="notes"></div>
+      <div class="rules">
+        Extraction rules: <code>Actions</code> → Task · <code>Decisions</code> → Story · <code>Risks</code> → Risk · <code>Open questions</code> → Question. Each dashed line is one item; <code>[Name]</code> is the owner and <code>(high)</code> the priority.
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="hBacklog">
+      <h2 id="hBacklog">
+        <span>Backlog</span>
+        <span class="filters" role="group" aria-label="Filter by ticket">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="open" aria-pressed="false">No ticket</button>
+          <button type="button" data-f="done" aria-pressed="false">With ticket</button>
+        </span>
+      </h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>ID</th><th>Item</th><th>Type</th><th>Owner</th><th>Priority</th><th>Source</th><th>Ticket</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="empty" hidden>No items match this filter.</div>
+    </section>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></aside>
+
+<script>
+const NOTES = [
+  { id: "n1", date: "Oct 1", title: "Product daily", raw:
+`Decisions:
+- Pastry orders are accepted with 48 hours' notice
+Actions:
+- [Camila] Add an allergen filter to the catalog (high)
+- [Andrés] Document the custom order flow (medium)
+Risks:
+- The payment provider may reject recurring charges
+Open questions:
+- Will we offer Sunday deliveries?` },
+  { id: "n2", date: "Oct 2", title: "Operations review", raw:
+`Decisions:
+- Bread stock is updated hourly from the bakery
+Actions:
+- [Laura] Create an alert when a product drops below 5 units (high)
+- [Camila] Review the wording of the confirmation emails (low)
+Risks:
+- Internet outages at the shop can delay inventory sync
+Open questions:
+- Who approves price changes in peak season?` },
+  { id: "n3", date: "Oct 5", title: "Weekly planning", raw:
+`Decisions:
+- Discount coupons are limited to one use per customer
+Actions:
+- [Andrés] Implement coupon validation in the cart (high)
+- [Laura] Prepare the user manual for the orders panel (medium)
+- [Camila] Update the catalog terms glossary (low)
+Risks:
+- Coupons could be applied twice if a payment is retried
+Open questions:
+- Do loyalty points expire?` },
+  { id: "n4", date: "Oct 6", title: "Product daily", raw:
+`Actions:
+- [Laura] Fix the rounding of the total on orders with tips (high)
+- [Andrés] Export the weekly sales report to CSV (medium)
+Risks:
+- Catalog image loading is slow on mobile
+Open questions:
+- Is e-invoicing required at launch?` }
+];
+
+const SECTIONS = {
+  "decisions": { type: "Story", ticket: "Story", prefix: "Implement rule: ", prio: "medium" },
+  "actions": { type: "Task", ticket: "Task", prefix: "", prio: "medium" },
+  "risks": { type: "Risk", ticket: "Risk", prefix: "Mitigate risk: ", prio: "high" },
+  "open questions": { type: "Question", ticket: "Spike", prefix: "Resolve: ", prio: "low" }
+};
+const CRITERIA = {
+  "Task": ["The change is implemented and reviewed by another person.", "Behavior was verified in the test environment.", "Related documentation is up to date."],
+  "Story": ["The rule applies in every affected flow.", "Tests cover the normal case and the edge case.", "Product validated the behavior."],
+  "Risk": ["A mitigation with an owner is defined.", "The signal that the risk has materialized is documented.", "The risk was reviewed at the next meeting."],
+  "Question": ["An answer was obtained from the responsible person.", "The decision is recorded in the meeting notes.", "If the scope changes, the matching ticket was created."]
+};
+const PRIO_LABEL = { high: "High", medium: "Medium", low: "Low" };
+
+let state;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function parseNote(raw) {
+  const out = [];
+  let section = null;
+  raw.split("\n").forEach((line) => {
+    const head = line.match(/^(Decisions|Actions|Risks|Open questions):\s*$/i);
+    if (head) { section = SECTIONS[head[1].toLowerCase()]; return; }
+    const m = line.match(/^-\s*(?:\[(.+?)\]\s*)?(.+?)(?:\s*\((high|medium|low)\))?\s*$/i);
+    if (m && section) {
+      out.push({ type: section.type, owner: m[1] || "Unassigned", text: m[2].trim(), prio: (m[3] || section.prio).toLowerCase() });
+    }
+  });
+  return out;
+}
+
+function processNote(note, markNew) {
+  const found = parseNote(note.raw);
+  found.forEach((it) => {
+    state.items.push({ id: "BL-" + String(state.seq++).padStart(3, "0"), type: it.type, text: it.text, owner: it.owner, prio: it.prio, noteId: note.id, isNew: markNew, ticket: null });
+  });
+  note.processed = true;
+  note.count = found.length;
+  return found.length;
+}
+
+function logEvent(text) {
+  state.audit.unshift({ t: new Date().toTimeString().slice(0, 8), text: text });
+}
+
+function init() {
+  state = { notes: NOTES.map((n) => ({ ...n, processed: false, count: 0 })), items: [], seq: 1, tix: 101, filter: "all", openId: null, audit: [] };
+  processNote(state.notes[0], false);
+  processNote(state.notes[1], false);
+  logEvent("Initial state: notes from Oct 1 and Oct 2 already processed, " + state.items.length + " items in the backlog.");
+  $("status").textContent = "";
+  closeSheet();
+  render();
+}
+
+function ticketFor(item) {
+  const sec = Object.values(SECTIONS).find((s) => s.type === item.type);
+  const note = state.notes.find((n) => n.id === item.noteId);
+  return {
+    kind: sec.ticket,
+    title: sec.prefix + item.text.replace(/\?/g, "").replace(/\.$/, ""),
+    prio: item.prio,
+    description: "Raised in the meeting “" + note.title + "” on " + note.date + ". Context: " + item.text + ". Proposed owner: " + item.owner + ".",
+    criteria: CRITERIA[item.type],
+    labels: ["orders-app", "from-notes", item.type.toLowerCase()],
+    source: note.title + " · " + note.date
+  };
+}
+
+function render() {
+  const pending = state.notes.filter((n) => !n.processed).length;
+  const btn = $("syncBtn");
+  btn.disabled = pending === 0;
+  btn.textContent = pending ? "Sync notes (" + pending + " pending)" : "No new notes";
+
+  const total = state.items.length;
+  const fresh = state.items.filter((i) => i.isNew).length;
+  const tix = state.items.filter((i) => i.ticket).length;
+  $("stats").innerHTML = "<span><b>" + total + "</b> items</span><span><b>" + fresh + "</b> new in the last sync</span><span><b>" + tix + "</b> with ticket</span><span><b>" + (total - tix) + "</b> without ticket</span>";
+
+  $("notes").innerHTML = state.notes.map((n, i) => {
+    const chip = n.processed ? '<span class="chip">Processed</span>' : '<span class="chip pending">Pending</span>';
+    const meta = n.processed ? '<p class="meta">' + n.count + " items extracted into the backlog.</p>" : '<p class="meta">Not read yet. It will be processed in the next sync.</p>';
+    return '<details class="note"' + (i === 2 ? " open" : "") + '><summary><span class="d">' + esc(n.date) + '</span><span class="t">' + esc(n.title) + "</span>" + chip + "</summary><pre>" + esc(n.raw) + "</pre>" + meta + "</details>";
+  }).join("");
+
+  document.querySelectorAll(".filters button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.f === state.filter)));
+  const list = state.items.filter((i) => state.filter === "all" || (state.filter === "done" ? i.ticket : !i.ticket));
+  $("empty").hidden = list.length > 0;
+  $("audit").innerHTML = state.audit.map((a) => '<div class="log"><span class="d">' + a.t + "</span><span>" + esc(a.text) + "</span></div>").join("");
+  $("rows").innerHTML = list.map((i) => {
+    const note = state.notes.find((n) => n.id === i.noteId);
+    const cell = i.ticket
+      ? '<button type="button" class="key" data-open="' + i.id + '" title="View ticket">' + i.ticket.key + "</button>"
+      : '<button type="button" class="btn small" data-open="' + i.id + '">Create ticket</button>';
+    return '<tr><td class="id">' + i.id + '</td><td class="item">' + esc(i.text) + (i.isNew ? '<span class="new">New</span>' : "") + '</td><td><span class="type">' + i.type + "</span></td><td>" + esc(i.owner) + '</td><td><span class="prio ' + i.prio + '">' + PRIO_LABEL[i.prio] + '</span></td><td class="src">' + esc(note.date) + "</td><td>" + cell + "</td></tr>";
+  }).join("");
+}
+
+function openSheet(id) {
+  const item = state.items.find((i) => i.id === id);
+  if (!item) return;
+  state.openId = id;
+  const created = !!item.ticket;
+  const t = created ? item.ticket : ticketFor(item);
+  if (!created) { logEvent("Drafter produced the draft for " + item.id + " (no permission to create tickets)."); render(); }
+  const sheet = $("sheet");
+  sheet.innerHTML =
+    "<header><div><h3 id=\"sheetTitle\">" + (created ? "Ticket " + t.key : "Ticket draft") + "</h3><div class=\"chips\" style=\"margin-top:6px\"><span class=\"type\">" + t.kind + "</span><span class=\"type\">" + item.id + "</span></div></div><button type=\"button\" class=\"btn small\" id=\"closeBtn\">Close</button></header>" +
+    "<div class=\"body\">" +
+    (created ? '<div class="review done">Ticket created after review. The flow ends here: AI proposes, a person approves.</div>' : '<div class="review">Draft from the Drafter, which has no permission to create tickets. Review and adjust it: only the Writer creates the ticket, and only after your approval.</div>') +
+    '<div class="field"><label for="fTitle">Title</label><input id="fTitle" value="' + esc(t.title) + '"' + (created ? " disabled" : "") + "></div>" +
+    '<div class="row2"><div class="field"><label for="fPrio">Priority</label><select id="fPrio"' + (created ? " disabled" : "") + ">" + ["high", "medium", "low"].map((p) => '<option value="' + p + '"' + (p === t.prio ? " selected" : "") + ">" + PRIO_LABEL[p] + "</option>").join("") + '</select></div><div class="field"><span class="lbl">Owner</span><p>' + esc(item.owner) + "</p></div></div>" +
+    '<div class="field"><span class="lbl">Description</span><p>' + esc(t.description) + "</p></div>" +
+    '<div class="field"><span class="lbl">Acceptance criteria</span><ul>' + t.criteria.map((c) => "<li>" + esc(c) + "</li>").join("") + "</ul></div>" +
+    '<div class="field"><span class="lbl">Labels</span><div class="chips">' + t.labels.map((l) => '<span class="type">' + esc(l) + "</span>").join("") + "</div></div>" +
+    '<div class="field"><span class="lbl">Source</span><p>' + esc(t.source) + "</p></div>" +
+    (created ? '<div class="field"><span class="lbl">Idempotency key</span><p style="font-family:var(--font-mono);font-size:12px">' + esc(t.idem) + "</p></div>" : "") +
+    "</div>" +
+    "<footer>" + (created ? "" : '<button type="button" class="btn primary" id="approveBtn">Approve and create ticket</button>') + '<button type="button" class="btn" id="copyBtn">Copy text</button></footer>';
+  sheet.hidden = false;
+  $("backdrop").hidden = false;
+  $("closeBtn").addEventListener("click", closeSheet);
+  const ap = $("approveBtn");
+  if (ap) ap.addEventListener("click", () => approve(id));
+  $("copyBtn").addEventListener("click", () => copyTicket(id));
+  (created ? $("closeBtn") : $("fTitle")).focus();
+}
+
+function closeSheet() {
+  state.openId = null;
+  $("sheet").hidden = true;
+  $("backdrop").hidden = true;
+}
+
+function approve(id) {
+  const item = state.items.find((i) => i.id === id);
+  if (item.ticket) { logEvent("Duplicate blocked: " + item.id + " already has ticket " + item.ticket.key + "."); closeSheet(); render(); return; }
+  const base = ticketFor(item);
+  item.ticket = Object.assign(base, { key: "BAK-" + state.tix++, title: $("fTitle").value.trim() || base.title, prio: $("fPrio").value, idem: item.id + "@" + item.noteId });
+  item.prio = item.ticket.prio;
+  logEvent("Human approval for " + item.id + ". The Writer created " + item.ticket.key + " (key " + item.ticket.idem + ").");
+  closeSheet();
+  render();
+  $("status").textContent = "Ticket " + item.ticket.key + " created from " + item.id + ".";
+}
+
+function copyTicket(id) {
+  const item = state.items.find((i) => i.id === id);
+  const t = item.ticket || Object.assign(ticketFor(item), { title: $("fTitle") ? $("fTitle").value : "" });
+  const text = [(t.key ? t.key + " · " : "") + t.kind + " · " + PRIO_LABEL[t.prio], t.title, "", "Description: " + t.description, "", "Acceptance criteria:"].concat(t.criteria.map((c) => "- " + c), ["", "Labels: " + t.labels.join(", "), "Source: " + t.source]).join("\n");
+  const done = () => { $("status").textContent = "Text copied."; };
+  const fallback = () => { $("status").textContent = "Could not copy automatically. Select the ticket text and copy it."; };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}
+
+function sync() {
+  const next = state.notes.find((n) => !n.processed);
+  if (!next) return;
+  state.items.forEach((i) => { i.isNew = false; });
+  const n = processNote(next, true);
+  logEvent("The Coordinator assigned the note “" + next.title + "” (" + next.date + ") to an extractor: " + n + " items, each with its source.");
+  render();
+  $("status").textContent = "Read “" + next.title + "” (" + next.date + "): " + n + " new items in the backlog.";
+}
+
+function showTab(name) {
+  const arch = name === "Arch";
+  $("viewArch").hidden = !arch;
+  $("viewBacklog").hidden = arch;
+  $("tabBtnArch").setAttribute("aria-selected", String(arch));
+  $("tabBtnBacklog").setAttribute("aria-selected", String(!arch));
+}
+
+$("syncBtn").addEventListener("click", sync);
+$("resetBtn").addEventListener("click", init);
+$("backdrop").addEventListener("click", closeSheet);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && state.openId) closeSheet(); });
+$("rows").addEventListener("click", (e) => { const b = e.target.closest("[data-open]"); if (b) openSheet(b.dataset.open); });
+document.querySelector(".filters").addEventListener("click", (e) => { const b = e.target.closest("[data-f]"); if (b) { state.filter = b.dataset.f; render(); } });
+document.querySelector(".tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) showTab(b.dataset.tab); });
+
+init();
+</script>
+
+</body></html>

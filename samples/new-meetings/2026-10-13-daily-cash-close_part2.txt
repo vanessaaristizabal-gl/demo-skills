@@ -1,0 +1,22 @@
+Meeting: Daily cash close and finance reports – Bakery Brasa (fictional data)
+Date: 2026-10-13
+Recording part: 2 of 2 (12:20–21:05)
+Attendees: Ricardo Solano (Finance, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:12:25] Julián: Continuing. Ricardo, you mentioned refunds before we stopped the recording.
+[00:12:35] Ricardo: Yes. When a customer gets a refund, I need it to appear as a negative amount in the same day it was refunded, not in the day of the original order. Otherwise the day does not match.
+[00:13:00] Andrés: Today a refund just changes the order status. It has no date of its own. We would have to record when it happened.
+[00:13:15] Julián: So that is part of the work, the refund needs its own date.
+[00:13:20] Ricardo: Yes.
+[00:14:10] Ricardo: Who can see this page? I do not want the shop staff looking at the totals.
+[00:14:25] Julián: Only finance, then.
+[00:14:30] Ricardo: Me and my assistant, Camila.
+[00:14:45] Andrés: We have roles in the panel already. We can restrict the page to a finance role.
+[00:16:20] Ricardo: And the transfers from companies, the ones Marta wants for catering. They also have to show up here, but I do not have the rules yet. I have to check with the accountant.
+[00:16:40] Julián: Then we leave the transfers out of the first version, and when you have the rules we add them.
+[00:16:50] Ricardo: Agreed.
+[00:18:00] Ricardo: Could the page send me an email every night with the totals?
+[00:18:08] Andrés: We could, but then we have to decide where it comes from and what it contains. For now I would say the page, and the email later.
+[00:18:20] Ricardo: Fine, the page is what I need.
+[00:19:30] Julián: To close, who confirms the day's cut-off time, ten thirty?
+[00:19:38] Ricardo: I confirm it with the shop managers and I tell you.

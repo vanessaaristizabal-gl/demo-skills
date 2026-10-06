@@ -1,0 +1,157 @@
+{
+  "id": "m1791322403677",
+  "title": "Customer feedback and notifications – Bakery Brasa",
+  "date": "2026-10-12",
+  "status": "processed",
+  "parts": [
+    {
+      "name": "2026-10-12-customer-feedback_part1.txt",
+      "text": "Meeting: Customer feedback and notifications – Bakery Brasa (fictional data)\nDate: 2026-10-12\nRecording part: 1 of 1 (00:00–16:30)\nAttendees: Paula Vega (Marketing, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer), Sofía Rojas (QA)\n\n[00:00:18] Julián: Paula, you asked for this meeting. Tell us what you are looking for.\n[00:00:30] Paula: I do not know what customers think of us after they receive the order. Right now I only know when somebody complains on Instagram, and by then it is too late.\n[00:01:10] Julián: So you would like to ask them directly.\n[00:01:14] Paula: Yes. Something short, after the order arrives. Stars, one to five, and a space to write if they want.\n[00:02:00] Sofía: Every order, or only some?\n[00:02:08] Paula: Every delivered order, but only once per order of course. And not too fast, maybe a few hours later, so they have eaten the bread.\n[00:02:40] Andrés: How do they receive it, email or in the app?\n[00:02:50] Paula: I think email. Although... honestly I am not sure. If we also notify them when the order is ready for pickup, maybe it should be the same channel. I need to ask my team.\n[00:03:30] Julián: Then we leave the channel open and you come back to us.\n[00:03:36] Paula: Yes.\n[00:04:20] Paula: Will the reviews be public on the website?\n[00:04:28] Julián: Do you want that?\n[00:04:33] Paula: No, not now. Private. First I want to read them and see what they say.\n[00:06:10] Sofía: Can I bring something up? In QA I noticed the confirmation emails show the pickup time two hours off. A customer picks 10:00 and the email says 08:00.\n[00:06:25] Andrés: That sounds like a time zone problem in the email template. I did not know.\n[00:06:35] Paula: Oh, that is serious, people arrive at the wrong time. Please fix that first, before anything new.\n[00:06:50] Julián: So the time zone problem goes first, the feedback after.\n[00:07:00] Paula: Yes. The feedback I would like before the holiday campaign starts, early November.\n[00:09:30] Paula: One more idea, a loyalty program with points. But I have no details yet, it is just an idea.\n[00:09:42] Julián: Then we do not write anything down now. When you have details we talk.\n[00:09:48] Paula: Fine.\n"
+    }
+  ],
+  "meeting": {
+    "participants": [
+      "Paula Vega (Marketing, stakeholder)",
+      "Julián Mora (Business analyst)",
+      "Andrés Gil (Developer)",
+      "Sofía Rojas (QA)"
+    ],
+    "goals": "Paula Vega asked for the meeting to learn what customers think after they receive an order, and to agree what a customer feedback request should look like.",
+    "topics": [
+      [
+        "00:00:30",
+        "Customer feedback after delivery",
+        "Paula Vega",
+        "Paula only learns about complaints from Instagram, too late. She wants a short request after the order arrives: one to five stars and an optional comment."
+      ],
+      [
+        "00:02:00",
+        "When the request is sent",
+        "Paula Vega",
+        "Every delivered order, once per order, a few hours after delivery so customers have eaten the bread."
+      ],
+      [
+        "00:02:40",
+        "Channel for the request",
+        "Paula Vega",
+        "Email is likely, but it may need to match the channel for ready-for-pickup notifications. Undecided; Paula will ask her team."
+      ],
+      [
+        "00:04:20",
+        "Visibility of reviews",
+        "Paula Vega",
+        "Reviews stay private for now. Paula wants to read them before deciding anything public."
+      ],
+      [
+        "00:06:10",
+        "Pickup time wrong in confirmation emails",
+        "Sofía Rojas",
+        "QA saw the confirmation email show the pickup time two hours off (10:00 picked, 08:00 shown). Andrés suspects a time zone problem in the email template."
+      ],
+      [
+        "00:06:35",
+        "Priority",
+        "Paula Vega",
+        "The time zone problem is fixed first, the feedback request after. Paula wants the feedback before the holiday campaign starts in early November."
+      ],
+      [
+        "00:09:30",
+        "Loyalty program idea",
+        "Paula Vega",
+        "Only an idea with no details. Nothing is written down until Paula has details."
+      ]
+    ],
+    "actions": [
+      "**Unassigned:** Fix the pickup time shown in confirmation emails (high).",
+      "**Unassigned:** Send customers a feedback request after a delivered order (medium).",
+      "**Paula Vega:** Ask her team which channel the feedback request uses and come back to the team."
+    ],
+    "decisions": [
+      "The pickup time bug in confirmation emails is fixed before the feedback request.",
+      "The feedback request is sent for every delivered order, once per order, a few hours after delivery.",
+      "Customers rate from one to five stars and can add a comment.",
+      "Feedback is private for now; it is not shown on the website.",
+      "The feedback request is wanted before the holiday campaign starts in early November."
+    ],
+    "related": [
+      "Open question: Which channel carries the feedback request (email or in the app)? Paula Vega will ask her team.",
+      "Open question: How many hours after delivery is the request sent? Only \"a few hours\" was said.",
+      "Open question: Who builds the time zone fix and the feedback request? No owner was named.",
+      "Deferred: Loyalty program with points. Idea only, no details; not recorded as work."
+    ]
+  },
+  "items": [
+    {
+      "id": "BL-016",
+      "title": "Fix the pickup time shown in confirmation emails",
+      "type": "Bug",
+      "area": "Orders · Confirmation email",
+      "owner": "Unassigned",
+      "prio": "high",
+      "phase": "1",
+      "desc": "The confirmation email shows the pickup time two hours earlier than the customer chose: a customer picks 10:00 and the email says 08:00. Customers could arrive at the wrong time. Found in QA; a time zone problem in the email template is suspected but not confirmed.",
+      "source": "2026-10-12 Customer feedback and notifications – Bakery Brasa · 00:06:10–00:07:00",
+      "notes": "2026-10-12 — Fix the pickup time in confirmation emails: [Requested by: Paula Vega; found by Sofía Rojas.] Suggested type: Bug — it should show the chosen time and does not. High priority because customers arrive at the wrong time; goes before the feedback request (BL-017). No owner was named.",
+      "ctx": "Found by QA (Sofía Rojas). Andrés Gil suspects a time zone problem in the email template; not verified.",
+      "steps": [
+        "Place an order and choose a pickup time of 10:00.",
+        "Open the confirmation email."
+      ],
+      "expected": "The email shows the pickup time the customer chose (10:00).",
+      "current": "The email shows 08:00, two hours earlier.",
+      "ac": [
+        [
+          "Pickup time in the email",
+          "Happy path",
+          "A customer chooses a pickup time of 10:00 and receives the confirmation email",
+          "the email shows 10:00"
+        ]
+      ],
+      "validation": "AC1 is testable and traceable to 00:06:10–00:06:25. The source supports no edge or negative case.",
+      "refs": "Open question: is it only the email template or also other places that show the pickup time? Not discussed."
+    },
+    {
+      "id": "BL-017",
+      "title": "Ask customers for feedback after a delivered order",
+      "type": "Story",
+      "area": "Orders · Customer feedback",
+      "owner": "Unassigned",
+      "prio": "medium",
+      "phase": "2",
+      "desc": "After an order is delivered, the customer gets a short request to rate the order from one to five stars and optionally write a comment. It is sent once per delivered order, a few hours after delivery. Reviews are private and not shown on the website. Marketing wants it before the holiday campaign in early November.",
+      "source": "2026-10-12 Customer feedback and notifications – Bakery Brasa · 00:00:30–00:04:33, 00:06:50–00:07:00",
+      "notes": "2026-10-12 — Ask customers for feedback after delivery: [Requested by: Paula Vega.] Suggested type: Story — a behaviour customers will get. Goes after the pickup time fix (BL-016). Channel undecided; Paula Vega will ask her team. Target: before the holiday campaign, early November.",
+      "ctx": "Marketing only hears about complaints on Instagram, after the damage is done. She wants direct feedback and will read the reviews privately first.",
+      "story": "As a customer, I want to rate my order after it arrives, so that the bakery learns what I thought of it.",
+      "rules": "Sent for every delivered order, once per order, a few hours after delivery. Rating is one to five stars with an optional comment. Reviews are private and not shown on the website.",
+      "ac": [
+        [
+          "Request after delivery",
+          "Happy path",
+          "An order is delivered",
+          "the customer receives one request to rate it from one to five stars, a few hours later"
+        ],
+        [
+          "Optional comment",
+          "Happy path",
+          "A customer opens the feedback request",
+          "they can give a star rating and may add a comment"
+        ],
+        [
+          "Once per order",
+          "Edge case",
+          "A feedback request was already sent for a delivered order",
+          "no second request is sent for that order"
+        ],
+        [
+          "Reviews are private",
+          "Happy path",
+          "A customer submits a review",
+          "the review is not shown on the website"
+        ]
+      ],
+      "validation": "AC1–AC4 are testable and traceable to 00:01:14–00:04:33. The delay is not given in hours and the channel is open, so neither was invented; see the open questions.",
+      "refs": "Open question (Paula Vega): which channel carries the request, email or in the app? Open question: how many hours after delivery? Deferred: loyalty program idea (00:09:30), no details."
+    }
+  ]
+}

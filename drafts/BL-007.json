@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-007",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.809Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Limit coupons to one use per customer account",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nProposed owner (from the meeting): Andrés Gil.\n\nPhase: 1.\n\nThe weekend promo starts Saturday. The team already decided that coupons are one use per customer; this meeting defined what one use means and what customers see.\n\n## User Story\nAs the bakery, I want each coupon limited to one use per customer account, so that the promotion follows the one-use-per-customer decision.\n\n## Acceptance Criteria\n- AC1: **Coupon used for the first time** (Happy path) — A signed-in customer applies a coupon their account has not used. Expected: the discount is applied to the cart.\n- AC2: **Coupon already used on the account** (Negative case) — A signed-in customer applies a coupon their account already used, from any device. Expected: no discount is applied and the message \"This coupon was already used on your account.\" is shown, without an error code.\n- AC3: **Guest checkout** (Negative case) — A customer without an account tries to apply a coupon. Expected: the coupon is not applied and the customer is asked to sign in.\n\n## Business Rules\nA guest without an account cannot use coupons.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-007",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:01:05–00:02:42",
+    "validation": "AC1–AC3 are testable, specific and traceable to 00:01:05–00:02:42. No edge case was added because the source supports none."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-014",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.817Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Spike",
+    "summary": "Find out whether loyalty points expire",
+    "priority": "medium",
+    "description": "## Context\nType: Spike (created as Task; this Jira project has no Spike type).\n\nProposed owner (from the meeting): Camila Torres.\n\nPhase: 2.\n\nCustomers ask whether loyalty points expire because the promo mentions points.\n\n## Question and Deliverable\nDetermine whether loyalty points expire. Deliverable: the answer from finance, recorded.\n\n## Acceptance Criteria\n- AC1: **Answer recorded** (Happy path) — Finance has answered. Expected: whether points expire, and after how long if they do, is recorded in the meeting notes.\n\n## Completion Checklist\n- [ ] Question answered.\n- [ ] Findings documented.\n- [ ] Decision or recommendation recorded.\n- [ ] Follow-up tickets created, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-014",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:19:00–00:19:15",
+    "validation": "AC1 is testable and traceable to 00:19:00. The source supports no edge or negative case."
+  }
+}

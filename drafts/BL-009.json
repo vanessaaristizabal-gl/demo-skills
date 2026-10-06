@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-009",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.811Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Show customers the status of their order",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nPhase: 1.\n\nCustomers ask \"where is my order?\" all day. The team agreed on a status page, updated by counter staff.\n\n## User Story\nAs a customer, I want to see the status of my order, so that I do not have to ask where it is.\n\n## Acceptance Criteria\n- AC1: **Customer checks an order** (Happy path) — A customer opens the status page for their order. Expected: the page shows one of Received, In the oven, Ready for pickup or Delivered.\n- AC2: **Staff update a status** (Happy path) — Counter staff change an order's status with one tap. Expected: the customer's status page shows the new status.\n\n## Business Rules\nThe status page ships before any notification feature and is not blocked by the notification question.\n\n## References, Risks and Dependencies\nRisk: bad Wi-Fi at the counter in the afternoon can slow the page. Mitigation idea, not decided: keep showing the last known status when offline.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-009",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:06:10–00:07:02, 00:23:30",
+    "validation": "AC1–AC2 are testable and traceable to 00:06:10–00:07:02. No edge or negative case is supported; the offline idea is recorded as a risk, not a requirement."
+  }
+}

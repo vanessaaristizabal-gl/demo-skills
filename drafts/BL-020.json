@@ -1,0 +1,44 @@
+{
+  "itemId": "BL-020",
+  "status": "draft",
+  "origin": "agent",
+  "updatedAt": "2026-10-06T22:19:40.523Z",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Allow cancellation before preparation with a full automatic refund",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nCustomers currently call Operations to cancel orders, and refunds are issued manually about ten times a week. Finance agreed to allow eligible cancellations from the app, with preparation starting at \"In the oven\".\n\n## User Story\nAs a customer, I want to cancel my order from the app before preparation starts and receive a full refund to the same card, so that I do not have to call Operations for an eligible cancellation.\n\n## Acceptance Criteria\n- AC1: **Eligible cancellation and full refund** (Happy path) — A customer cancels an order from the app before its status reaches \"In the oven\". Expected: the order is cancelled and a full refund is issued automatically to the same card.\n- AC2: **Preparation has started** (Negative case) — An order has reached \"In the oven\" or a later status. Expected: the cancel option is not shown and the order cannot be cancelled from the app.\n\n## References, Risks and Dependencies\nAfter \"In the oven\", customers call Operations; no support number or UI message was specified. Dependency: refund entries belong to existing daily cash close work (00:07:30–00:07:45); no ticket key was provided. Gift cards are out of scope. The 50% partial-refund proposal was withdrawn. Open question (Andrés Gil): provider settlement time in days. Cancellation controls, confirmation text and failure handling were not specified.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-020",
+    "source": "2026-10-19 Refunds and order cancellations – Julián Mora · 00:01:10–00:02:36, 00:03:20–00:04:12, 00:07:30–00:07:45, 00:09:00–00:09:08",
+    "validation": "AC1–AC2 are specific, observable and traceable to 00:01:10–00:02:36 and 00:03:50–00:04:12. They cover the agreed in-app cancellation, full automatic refund to the same card and cancellation restriction. No edge case, provider timing, failure handling or partial refund rule was invented; the source supports happy-path and negative cases only.",
+    "labels": [],
+    "checks": {
+      "project": "unverified",
+      "type": "unverified",
+      "account": "unverified",
+      "fields": "unverified",
+      "labels": "unverified",
+      "duplicates": "unverified",
+      "reason": "No Jira connector is available; no live Jira search or write was performed.",
+      "requiredFields": {
+        "customfield_10302": {
+          "name": "Start date",
+          "status": "pending",
+          "value": null
+        },
+        "duedate": {
+          "name": "Due date",
+          "status": "pending",
+          "value": null
+        },
+        "customfield_11985": {
+          "name": "Practice & learning path",
+          "status": "pending",
+          "value": null
+        }
+      }
+    }
+  }
+}

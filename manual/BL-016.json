@@ -1,0 +1,6 @@
+{
+  "itemId": "BL-016",
+  "status": "na",
+  "reason": "Fixes a defect. The pickup time customers choose is already the documented behaviour; the fix only makes the email show it correctly.",
+  "updatedAt": "2026-10-12"
+}

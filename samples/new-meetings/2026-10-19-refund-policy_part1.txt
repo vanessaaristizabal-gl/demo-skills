@@ -1,0 +1,25 @@
+Meeting: Refunds and order cancellations – Bakery Brasa (fictional data)
+Date: 2026-10-19
+Recording part: 1 of 1 (00:00–13:40)
+Attendees: Ricardo Solano (Finance, stakeholder), Laura Peña (Operations), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:00:15] Julián: Ricardo, Laura, today is about cancellations and refunds.
+[00:00:30] Laura: Today a customer who cancels calls us and we refund by hand. It happens about ten times a week.
+[00:01:10] Ricardo: I want customers to cancel from the app, but only before the bakery starts preparing the order.
+[00:01:25] Laura: Preparing means the status "In the oven".
+[00:01:40] Ricardo: Right. Before that they cancel and get the full refund automatically.
+[00:02:30] Andrés: Automatic to the same card?
+[00:02:36] Ricardo: Yes, the same card.
+[00:03:20] Ricardo: And after "In the oven", a partial refund of fifty percent.
+[00:03:35] Laura: No, that is not fair for a cake we have not decorated yet.
+[00:03:50] Ricardo: You are right. Forget the fifty percent. After "In the oven" no cancellation from the app, they call us.
+[00:04:05] Julián: So after "In the oven" the cancel option disappears. Confirmed?
+[00:04:12] Ricardo: Confirmed.
+[00:05:40] Laura: How long does the refund take to reach the card?
+[00:05:48] Andrés: It depends on the payment provider. I do not know the time.
+[00:06:00] Ricardo: Then find out. I want to tell customers a number of days.
+[00:06:10] Andrés: I will ask the provider and report back.
+[00:07:30] Ricardo: Also, every refund should appear in the daily cash close report.
+[00:07:45] Julián: That belongs to the cash close work from last week; we note it as a dependency, not as new work.
+[00:09:00] Laura: Gift cards, can they be refunded?
+[00:09:08] Ricardo: Not now. Let's leave gift cards out.

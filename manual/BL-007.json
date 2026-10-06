@@ -1,0 +1,21 @@
+{
+  "itemId": "BL-007",
+  "status": "draft",
+  "title": "Using a coupon at checkout",
+  "audience": "Customers",
+  "summary": "Each coupon can be used once per customer account, not once per device.",
+  "steps": [
+    "Sign in to your account.",
+    "Apply the coupon in your cart."
+  ],
+  "sees": [
+    "The discount is applied to your cart.",
+    "If your account already used the coupon, on any device, no discount is applied and you see “This coupon was already used on your account.”",
+    "If you are not signed in, the coupon is not applied and you are asked to sign in."
+  ],
+  "notes": [
+    "Guests without an account cannot use coupons."
+  ],
+  "source": "BL-007 · acceptance criteria AC1–AC3 · 2026-10-06 meeting",
+  "updatedAt": "2026-10-06"
+}

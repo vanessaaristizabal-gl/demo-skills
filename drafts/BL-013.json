@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-013",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.816Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Spike",
+    "summary": "Decide how customers are notified when an order is ready",
+    "priority": "medium",
+    "description": "## Context\nType: Spike (created as Task; this Jira project has no Spike type).\n\nProposed owner (from the meeting): Camila Torres.\n\nPhase: 2.\n\nThe team could not say whether customers get a notification when an order is Ready for pickup.\n\n## Question and Deliverable\nDecide which channel announces a ready order: email, SMS, or the status page only. Deliverable: the decision recorded, and a follow-up ticket if a notification is chosen.\n\n## Acceptance Criteria\n- AC1: **Channel decided** (Happy path) — The marketing lead has answered. Expected: the chosen channel is recorded in the meeting notes, and a follow-up ticket exists if email or SMS was chosen.\n\n## References, Risks and Dependencies\nThe order status page does not wait for this answer.\n\n## Completion Checklist\n- [ ] Question answered.\n- [ ] Findings documented.\n- [ ] Decision or recommendation recorded.\n- [ ] Follow-up tickets created, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-013",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:07:30–00:07:41",
+    "validation": "AC1 is testable and traceable to 00:07:30. The source supports no edge or negative case."
+  }
+}

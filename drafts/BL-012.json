@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-012",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.814Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Task",
+    "summary": "Export the weekly sales report to CSV",
+    "priority": "medium",
+    "description": "## Context\nProposed owner (from the meeting): Andrés Gil.\n\nPhase: 2.\n\nFinance asks Operations for the weekly sales report every Monday.\n\n## Objective and Deliverable\nA CSV export of the weekly sales report.\n\n## Acceptance Criteria\n- AC1: **Weekly export** (Happy path) — A user requests the weekly sales report export. Expected: a CSV file with the weekly sales report is produced.\n\n## References, Risks and Dependencies\nOpen question (Laura Peña): which columns does Finance need?\n\n## Completion Checklist\n- [ ] Deliverable completed.\n- [ ] Acceptance criteria met.\n- [ ] Required validation completed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-012",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:17:10–00:17:25",
+    "validation": "AC1 is testable and traceable to 00:17:10. The columns are not specified, so none were invented; see the open question."
+  }
+}

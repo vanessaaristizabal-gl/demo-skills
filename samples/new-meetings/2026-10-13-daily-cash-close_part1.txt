@@ -1,0 +1,21 @@
+Meeting: Daily cash close and finance reports – Bakery Brasa (fictional data)
+Date: 2026-10-13
+Recording part: 1 of 2 (00:00–12:20)
+Attendees: Ricardo Solano (Finance, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:00:12] Julián: Ricardo, let's begin with how you close the day today.
+[00:00:25] Ricardo: Every night I open the orders panel, export what I can, copy numbers into a spreadsheet and compare them with the card terminal and the cash in the drawer. It takes me almost an hour and I make mistakes.
+[00:01:15] Julián: What would you like to have in its place?
+[00:01:20] Ricardo: One page that shows, for the day, how much was sold in cash, in cards and in transfers, and how much in tips. Already added up.
+[00:02:05] Andrés: By payment method, then.
+[00:02:10] Ricardo: Yes. And separate the tips, because the tips are not income for the bakery, they belong to the staff.
+[00:02:50] Julián: Does the day end at midnight?
+[00:02:55] Ricardo: No. The shops close at nine and the last order is processed around ten. I would say the day ends at ten thirty.
+[00:03:30] Andrés: Careful, because the tip totals today have a rounding problem. The screen and the receipt differ by a cent in some orders. If Ricardo sums them the totals will not match.
+[00:03:50] Ricardo: That is exactly what happens to me! I never understood why I was off by a few cents every night.
+[00:04:05] Julián: Then the rounding problem must be solved before this report, otherwise the report would be wrong from day one.
+[00:04:15] Ricardo: Yes, please.
+[00:05:40] Ricardo: Also I would like to download it. Excel if possible, but CSV is fine.
+[00:05:55] Andrés: CSV is easy. Excel I would leave for later.
+[00:06:05] Ricardo: CSV is fine.
+[00:08:30] Ricardo: What I need before the end of the month is this page. The month-end close is the 31st and doing it by hand again would be painful.

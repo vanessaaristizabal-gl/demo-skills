@@ -1,0 +1,20 @@
+Meeting: Delivery zones and fees – Bakery Brasa (fictional data)
+Date: 2026-10-09
+Recording part: 2 of 2 (11:50–19:10)
+Attendees: Laura Peña (Operations, stakeholder), Diego Fallas (Delivery partner), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:11:55] Julián: Back. We were on Sundays. Laura, you asked last week about Sunday deliveries.
+[00:12:05] Laura: Yes, the customers ask a lot. But I do not know if Diego can do Sundays.
+[00:12:15] Diego: I would have to ask my drivers, and it would cost more. I cannot answer today.
+[00:12:30] Julián: Then we leave Sundays open until Diego comes back with an answer.
+[00:13:10] Laura: Another thing. When the delivery is late, customers call the shop. I would like them to see on the order where the driver is.
+[00:13:25] Diego: Live location, no. My drivers use their own phones and they will not install anything.
+[00:13:40] Andrés: And it is a big feature anyway.
+[00:13:48] Julián: So we do not take that one now. Laura, would it be enough for the customer to see "on the way" and the estimated time?
+[00:14:00] Laura: Yes, that is enough for now.
+[00:14:20] Andrés: That fits with the order status page we are building. We can add "On the way" as another status.
+[00:14:30] Laura: Perfect.
+[00:15:40] Julián: Let me summarize what I understood so we are all on the same page. Delivery fee by area, chosen from a neighborhood list, shown before paying. Not delivering outside the areas, with the pickup option. "On the way" with an estimated time. Sundays pending Diego's answer. No live location.
+[00:16:10] Laura: That is it. If we have the fees by the end of October I am happy, because the Christmas orders will be many.
+[00:16:25] Diego: I send the neighborhood list this week.
+[00:16:35] Julián: And I will take the fee values to Ricardo with Laura so we do not make up the numbers.

@@ -1,0 +1,44 @@
+{
+  "itemId": "BL-021",
+  "status": "draft",
+  "origin": "agent",
+  "updatedAt": "2026-10-06T22:19:40.528Z",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Spike",
+    "summary": "Determine how many days refunds take to reach the card",
+    "priority": "medium",
+    "description": "## Context\nType: Spike (created as Task; this Jira project has no Spike type).\n\nProposed owner (from the meeting): Andrés Gil.\n\nLaura asked how long the refund takes to reach the card. Andrés said the time depends on the payment provider and is currently unknown. Ricardo requested a number of days to tell customers.\n\n## Question and Deliverable\nDetermine how many days a refund takes to reach the card by asking the payment provider. Deliverable: the provider answer reported back so Finance can communicate the refund timeframe to customers.\n\n## Acceptance Criteria\n- AC1: **Provider answer reported** (Happy path) — Andrés Gil has asked the payment provider about refund settlement time. Expected: the provider answer about how many days a refund takes to reach the card is reported back for customer communication.\n\n## References, Risks and Dependencies\nOpen question (Andrés Gil): the payment provider refund settlement time is unknown. Do not promise a number of days until the provider answers. No investigation deadline was assigned.\n\n## Completion Checklist\n- [ ] Question answered.\n- [ ] Findings documented.\n- [ ] Decision or recommendation recorded.\n- [ ] Follow-up tickets created, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-021",
+    "source": "2026-10-19 Refunds and order cancellations – Julián Mora · 00:05:40–00:06:10",
+    "validation": "AC1 is specific, observable and traceable to 00:05:40–00:06:10. It covers the agreed provider inquiry and report-back deliverable. No refund duration, investigation deadline, edge case or negative-case requirement was invented; the source supports only this happy-path deliverable.",
+    "labels": [],
+    "checks": {
+      "project": "unverified",
+      "type": "unverified",
+      "account": "unverified",
+      "fields": "unverified",
+      "labels": "unverified",
+      "duplicates": "unverified",
+      "reason": "No Jira connector is available; no live Jira search or write was performed.",
+      "requiredFields": {
+        "customfield_10302": {
+          "name": "Start date",
+          "status": "pending",
+          "value": null
+        },
+        "duedate": {
+          "name": "Due date",
+          "status": "pending",
+          "value": null
+        },
+        "customfield_11985": {
+          "name": "Practice & learning path",
+          "status": "pending",
+          "value": null
+        }
+      }
+    }
+  }
+}

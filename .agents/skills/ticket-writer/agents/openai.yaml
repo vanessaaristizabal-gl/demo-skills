@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jira Ticket Writer"
+  short_description: "Backlog a borradores Jira con criterios verificables"
+  default_prompt: "Usa $ticket-writer para preparar un borrador de Jira a partir de un backlog item, sin publicarlo."

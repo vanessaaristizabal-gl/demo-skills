@@ -1,0 +1,21 @@
+Meeting: Apertura de la sucursal Norte – Bakery Brasa (fictional data)
+Date: 2026-10-21
+Recording part: 1 of 1 (00:00–10:30)
+Attendees: Daniela Ortiz (Gerente de sucursal, stakeholder), Julián Mora (Analista de negocio), Andrés Gil (Desarrollador), Laura Peña (Operaciones)
+
+[00:00:20] Julián: Daniela, cuéntanos qué necesita la sucursal Norte de la app.
+[00:00:35] Daniela: Abrimos el primero de diciembre. Los clientes tienen que poder elegir en qué sucursal recogen su pedido, Centro o Norte.
+[00:01:10] Andrés: Hoy la app asume una sola sucursal.
+[00:01:18] Daniela: Lo sé. La elección debe aparecer antes de pagar, y el pedido le llega solo a la cocina de esa sucursal.
+[00:02:05] Laura: Los horarios son distintos. Norte abre a las siete, Centro a las seis.
+[00:02:15] Daniela: Y los clientes solo deben ver horas de recogida dentro del horario de la sucursal que eligieron.
+[00:03:00] Julián: ¿Los productos son los mismos en las dos?
+[00:03:08] Daniela: Casi todos. Norte no va a hacer pastelería por encargo al principio.
+[00:03:20] Andrés: Entonces el catálogo necesita saber qué sucursal ofrece qué.
+[00:03:28] Daniela: Sí, pero eso puede esperar hasta enero. Primero lo del primero de diciembre: elegir sucursal, cocina correcta y horarios.
+[00:04:30] Laura: ¿Y las entregas a domicilio?
+[00:04:38] Daniela: Norte solo recogida por ahora. No lo anotemos como trabajo.
+[00:05:10] Julián: Resumo: fase 1, elegir sucursal, pedido a la cocina correcta y horarios por sucursal. Fase 2, catálogo por sucursal.
+[00:05:20] Daniela: Correcto.
+[00:06:00] Andrés: Una duda: si el cliente cambia de sucursal con el carrito lleno, ¿qué pasa con los productos que Norte no ofrece?
+[00:06:12] Daniela: No lo había pensado. Lo consulto con mi equipo.

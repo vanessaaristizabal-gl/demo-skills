@@ -1,0 +1,14 @@
+{
+  "itemId": "BL-001",
+  "status": "draft",
+  "title": "Filtering the catalog by allergen",
+  "audience": "Customers",
+  "summary": "Filter the catalog to find products by allergen.",
+  "steps": [],
+  "sees": [],
+  "notes": [
+    "The source only says customers need to filter by allergen. Options and screens are not specified yet, so this section stays short until they are."
+  ],
+  "source": "BL-001 · 2026-10-01 Product daily",
+  "updatedAt": "2026-10-06"
+}

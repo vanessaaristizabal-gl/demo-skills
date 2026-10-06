@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-011",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.813Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Bug",
+    "summary": "Fix the one-cent difference between screen and receipt on orders with tips",
+    "priority": "high",
+    "description": "## Context\nType: Bug (created as Task; this Jira project has no Bug type).\n\nProposed owner (from the meeting): Andrés Gil.\n\nPhase: 1.\n\nFound by QA (Sofía Rojas). Rounding is done in two places: the screen rounds the tip, the receipt rounds the total.\n\n## Steps to Reproduce\n1. Place an order with subtotal 12.35.\n2. Add a 15% tip.\n3. Compare the total on screen with the total on the receipt.\n\n## Expected Behavior\nThe total on screen and the total on the receipt are the same.\n\n## Current Behavior\nThe screen shows 14.20 and the receipt shows 14.21.\n\n## Acceptance Criteria\n- AC1: **Order with a tip** (Happy path) — A customer places an order with a tip, for example subtotal 12.35 and a 15% tip. Expected: the total on screen and the total on the receipt are identical.\n\n## References, Risks and Dependencies\nDo after the coupon double-application fix (BL-008).\n\n## Completion Checklist\n- [ ] Fix completed.\n- [ ] Acceptance criteria met.\n- [ ] Fix verified in the environment where it failed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-011",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:14:22–00:15:33",
+    "validation": "AC1 is testable and traceable to 00:14:30–00:15:20. The source supports no edge or negative case."
+  }
+}

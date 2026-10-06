@@ -1,0 +1,203 @@
+{
+  "id": "m1791321248814",
+  "status": "processed",
+  "createdAt": "2026-10-06T21:14:08.000Z",
+  "title": "Delivery zones and fees – Laura Peña",
+  "date": "2026-10-09",
+  "parts": [
+    {
+      "name": "2026-10-09-delivery-zones_part1.txt",
+      "text": "Meeting: Delivery zones and fees – Bakery Brasa (fictional data)\nDate: 2026-10-09\nRecording part: 1 of 2 (00:00–11:50)\nAttendees: Laura Peña (Operations, stakeholder), Diego Fallas (Delivery partner), Julián Mora (Business analyst), Andrés Gil (Developer)\n\n[00:00:15] Julián: Let's start with what Laura sees every day, then Diego tells us what his drivers can really do.\n[00:00:40] Laura: Right now every delivery costs the same, no matter how far. We lose money on the far neighborhoods and we overcharge the close ones. Customers complain.\n[00:01:25] Julián: So you want the price of delivery to depend on where the customer lives.\n[00:01:32] Laura: Exactly. By neighborhood, not by kilometers, because nobody understands kilometers.\n[00:02:10] Diego: My drivers work in three areas. North, center and south. The center is the quickest, north is a bit longer and south is the far one.\n[00:02:45] Andrés: Could we keep a list of neighborhoods and tell which area each one belongs to?\n[00:02:55] Diego: I can send you the list. Around sixty neighborhoods.\n[00:03:20] Laura: And each area has its own fee. I will tell you the numbers, I have to confirm them with Ricardo first.\n[00:04:10] Julián: At checkout, the customer enters the address. What should happen if the neighborhood is not in any area?\n[00:04:22] Laura: Then we do not deliver there. It should say so clearly, and offer pickup in the shop.\n[00:05:15] Diego: Something that happens a lot: customers write the neighborhood wrong, or a nickname. \"El Poblado Alto\", things like that.\n[00:05:35] Andrés: We can show a list to pick from instead of free text. That avoids most mistakes.\n[00:05:42] Laura: Yes, better.\n[00:07:00] Laura: Also, the customer should see the delivery fee before paying, not after. Now they only find out in the last step and they leave.\n[00:07:20] Julián: So the fee appears as soon as they choose the neighborhood.\n[00:07:25] Laura: Yes.\n[00:09:30] Diego: One warning from my side. In the south we cannot deliver after seven in the evening, the roads are bad.\n[00:09:45] Julián: Do we have delivery times in the app today?\n[00:09:50] Andrés: Customers choose a time slot, yes. We would need slots that depend on the area.\n[00:10:05] Laura: That would be good, but it is not urgent. First the fees.\n"
+    },
+    {
+      "name": "2026-10-09-delivery-zones_part2.txt",
+      "text": "Meeting: Delivery zones and fees – Bakery Brasa (fictional data)\nDate: 2026-10-09\nRecording part: 2 of 2 (11:50–19:10)\nAttendees: Laura Peña (Operations, stakeholder), Diego Fallas (Delivery partner), Julián Mora (Business analyst), Andrés Gil (Developer)\n\n[00:11:55] Julián: Back. We were on Sundays. Laura, you asked last week about Sunday deliveries.\n[00:12:05] Laura: Yes, the customers ask a lot. But I do not know if Diego can do Sundays.\n[00:12:15] Diego: I would have to ask my drivers, and it would cost more. I cannot answer today.\n[00:12:30] Julián: Then we leave Sundays open until Diego comes back with an answer.\n[00:13:10] Laura: Another thing. When the delivery is late, customers call the shop. I would like them to see on the order where the driver is.\n[00:13:25] Diego: Live location, no. My drivers use their own phones and they will not install anything.\n[00:13:40] Andrés: And it is a big feature anyway.\n[00:13:48] Julián: So we do not take that one now. Laura, would it be enough for the customer to see \"on the way\" and the estimated time?\n[00:14:00] Laura: Yes, that is enough for now.\n[00:14:20] Andrés: That fits with the order status page we are building. We can add \"On the way\" as another status.\n[00:14:30] Laura: Perfect.\n[00:15:40] Julián: Let me summarize what I understood so we are all on the same page. Delivery fee by area, chosen from a neighborhood list, shown before paying. Not delivering outside the areas, with the pickup option. \"On the way\" with an estimated time. Sundays pending Diego's answer. No live location.\n[00:16:10] Laura: That is it. If we have the fees by the end of October I am happy, because the Christmas orders will be many.\n[00:16:25] Diego: I send the neighborhood list this week.\n[00:16:35] Julián: And I will take the fee values to Ricardo with Laura so we do not make up the numbers.\n"
+    }
+  ],
+  "meeting": {
+    "participants": [
+      "Laura Peña (Operations)",
+      "Diego Fallas (Delivery partner)",
+      "Julián Mora (Business analyst)",
+      "Andrés Gil (Developer)"
+    ],
+    "goals": "Make the delivery fee depend on where the customer lives, and agree what the drivers can and cannot do.",
+    "topics": [
+      [
+        "00:00:40",
+        "Flat delivery fee",
+        "Laura Peña",
+        "Every delivery costs the same regardless of distance. Far neighborhoods lose money, close ones are overcharged, and customers complain."
+      ],
+      [
+        "00:02:10",
+        "Delivery areas",
+        "Diego Fallas",
+        "Drivers work in three areas: North, center and south. The center is the quickest, the north a bit longer and the south the farthest. Diego will send a list of about sixty neighborhoods with the area of each."
+      ],
+      [
+        "00:03:20",
+        "Fee per area",
+        "Laura Peña",
+        "Each area has its own fee. Laura will confirm the amounts with Ricardo (Finance) first."
+      ],
+      [
+        "00:04:10",
+        "Neighborhood outside the areas",
+        "Laura Peña",
+        "No delivery there. The customer is told clearly and offered pickup in the shop."
+      ],
+      [
+        "00:05:15",
+        "Neighborhood entry",
+        "Andrés Gil",
+        "Customers misspell neighborhoods or use nicknames. Choosing from a list instead of free text avoids most mistakes."
+      ],
+      [
+        "00:07:00",
+        "Fee shown before paying",
+        "Laura Peña",
+        "Customers see the fee only at the last step and leave. It should appear as soon as the neighborhood is chosen."
+      ],
+      [
+        "00:09:30",
+        "South after seven",
+        "Diego Fallas",
+        "No deliveries in the south after 7 pm because of the roads. Time slots would need to depend on the area; Laura: good, but not urgent, first the fees."
+      ],
+      [
+        "00:11:55",
+        "Sunday deliveries",
+        "Laura Peña",
+        "Customers ask often. Diego cannot answer today: it would cost more and he must ask his drivers."
+      ],
+      [
+        "00:13:10",
+        "Driver's live location",
+        "Laura Peña",
+        "Not feasible: drivers use their own phones and will not install anything, and it is a big feature."
+      ],
+      [
+        "00:13:48",
+        "Status \"On the way\"",
+        "Julián Mora",
+        "Instead, show \"On the way\" and an estimated time. It fits the order status page already being built."
+      ],
+      [
+        "00:16:10",
+        "Timing",
+        "Laura Peña",
+        "Fees by the end of October, because the Christmas orders will be many."
+      ]
+    ],
+    "actions": [
+      "**Diego Fallas:** Send the list of about sixty neighborhoods with the area of each, this week.",
+      "**Laura Peña and Julián Mora:** Confirm the delivery fee for each area with Ricardo (Finance), so the numbers are not invented.",
+      "**Diego Fallas:** Ask the drivers whether Sunday deliveries are possible and at what extra cost."
+    ],
+    "decisions": [
+      "The delivery fee depends on the delivery area (North, center, south), not on distance.",
+      "The customer picks the neighborhood from a list and sees the fee before paying.",
+      "Neighborhoods outside the areas are not delivered to: the customer is told and offered pickup in the shop.",
+      "The order status adds \"On the way\" with an estimated time. Live driver location is not taken now."
+    ],
+    "related": [
+      "Open question: Can Sunday deliveries be offered, and at what extra cost? Owner: Diego Fallas.",
+      "Deferred: Delivery time slots that depend on the area (no deliveries in the south after 7 pm). Laura Peña: good, but not urgent; first the fees.",
+      "Declined: Live driver location on the order.",
+      "Dependency: the list of about sixty neighborhoods from Diego Fallas, and the fee amounts from Finance.",
+      "Related: the order status page (BL-009) receives the new \"On the way\" status."
+    ]
+  },
+  "items": [
+    {
+      "id": "BL-016",
+      "title": "Charge the delivery fee by area and show it before paying",
+      "type": "Story",
+      "area": "Checkout · Delivery",
+      "owner": "Unassigned",
+      "prio": "high",
+      "phase": "1",
+      "desc": "The delivery fee depends on the customer's area (North, center or south) instead of being the same for everyone. The customer picks the neighborhood from a list and sees the fee as soon as they choose it. Neighborhoods outside the areas are not delivered to: the customer is told and offered pickup in the shop.",
+      "source": "2026-10-09 Delivery zones and fees – Laura Peña · 00:00:40–00:07:25",
+      "notes": "2026-10-09 — Charge the delivery fee by area: [Requested by: Laura Peña.] Due the end of October because of the Christmas orders; Laura: first the fees. Suggested type: Story — a behaviour customers will see. Depends on Diego Fallas's neighborhood list and on the fee amounts (BL-017).",
+      "dev": "",
+      "ctx": "Every delivery costs the same, so far neighborhoods lose money, close ones are overcharged and customers complain. Laura Peña asked for the fee to depend on where the customer lives, by neighborhood.",
+      "story": "As a customer, I want to see the delivery fee for my neighborhood before I pay, so that I do not find out at the last step and give up the order.",
+      "rules": "The delivery areas are North, center and south, each with its own fee. Neighborhoods outside the areas are not delivered to.",
+      "ac": [
+        [
+          "Fee shown when the neighborhood is chosen",
+          "Happy path",
+          "A customer selects a neighborhood that belongs to one of the delivery areas",
+          "the delivery fee of that area is shown immediately, before payment, and is applied to the order"
+        ],
+        [
+          "Neighborhood chosen from a list",
+          "Happy path",
+          "A customer enters their delivery address",
+          "the neighborhood is picked from a list instead of typed as free text"
+        ],
+        [
+          "Neighborhood outside the areas",
+          "Negative case",
+          "A customer enters a neighborhood that is not in any delivery area",
+          "delivery is not offered, a clear message says so, and pickup in the shop is offered"
+        ]
+      ],
+      "validation": "AC1–AC3 are testable and traceable to 00:00:40–00:07:25. The source supports no edge case. The fee amounts are not stated, so none were written.",
+      "refs": "Dependency: Diego Fallas sends the list of about sixty neighborhoods with their area this week. Open question: the fee amount for each area, being confirmed with Finance (BL-017). Deferred, not part of this item: delivery time slots that depend on the area."
+    },
+    {
+      "id": "BL-017",
+      "title": "Confirm the delivery fee for each area with Finance",
+      "type": "Task",
+      "area": "Checkout · Delivery",
+      "owner": "Julián Mora",
+      "prio": "high",
+      "phase": "1",
+      "desc": "Agree with Ricardo (Finance) the delivery fee for the North, center and south areas, so the amounts are not invented before the fees are built.",
+      "source": "2026-10-09 Delivery zones and fees – Laura Peña · 00:03:20, 00:16:35",
+      "notes": "2026-10-09 — Confirm the area fees with Finance: [Requested by: Laura Peña.] Julián Mora takes the values to Ricardo together with Laura. Blocks BL-016.",
+      "dev": "",
+      "ctx": "Each delivery area has its own fee, but the amounts are not confirmed. Laura Peña must confirm them with Ricardo (Finance) before the fees are built.",
+      "objective": "The delivery fee for each area (North, center, south), confirmed by Finance.",
+      "ac": [
+        [
+          "Fees confirmed",
+          "Happy path",
+          "Finance has reviewed the proposed amounts with Operations",
+          "a fee for each of the North, center and south areas is recorded"
+        ]
+      ],
+      "validation": "AC1 is testable and traceable to 00:03:20 and 00:16:35. The source supports no edge or negative case.",
+      "refs": "Blocks the delivery fee story (BL-016)."
+    },
+    {
+      "id": "BL-018",
+      "title": "Show \"On the way\" and an estimated time on the order status",
+      "type": "Story",
+      "area": "Orders · Status page",
+      "owner": "Unassigned",
+      "prio": "medium",
+      "phase": "N/A",
+      "desc": "When an order leaves for delivery, the customer sees the status \"On the way\" and an estimated time. It extends the order status page and replaces the live driver location, which was declined.",
+      "source": "2026-10-09 Delivery zones and fees – Laura Peña · 00:13:10–00:14:30",
+      "notes": "2026-10-09 — Show On the way with an estimated time: [Requested by: Laura Peña.] Extends the order status page (BL-009). Live driver location was declined: drivers use their own phones and will not install anything. Suggested type: Story — a behaviour customers will see.",
+      "dev": "",
+      "ctx": "When a delivery is late, customers call the shop. Laura Peña asked to show where the driver is; live location was declined, and \"On the way\" with an estimated time is enough for now.",
+      "story": "As a customer waiting for a delivery, I want to see that my order is on the way and when it should arrive, so that I do not have to call the shop.",
+      "rules": "",
+      "ac": [
+        [
+          "Order on the way",
+          "Happy path",
+          "An order leaves the shop for delivery",
+          "the customer's status page shows \"On the way\" and an estimated time"
+        ]
+      ],
+      "validation": "AC1 is testable and traceable to 00:13:48–00:14:30. How the estimated time is calculated is not stated, so it stays an open question.",
+      "refs": "Open question: how the estimated time is calculated. Related: the order status page (BL-009), where the new status appears."
+    }
+  ]
+}

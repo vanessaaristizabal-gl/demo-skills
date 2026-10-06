@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-004",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.808Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Spike",
+    "summary": "Find out whether Sunday deliveries will be offered",
+    "priority": "low",
+    "description": "## Context\nType: Spike (created as Task; this Jira project has no Spike type).\n\nIt is not known whether Sunday deliveries will be offered. Raised by Laura Peña in the 2026-10-01 product daily.\n\n## Question and Deliverable\nDetermine whether Sunday deliveries will be offered. Deliverable: the answer, recorded.\n\n## Acceptance Criteria\n- AC1: **Answer recorded** (Happy path) — Operations has answered. Expected: whether Sunday deliveries will be offered is recorded in the meeting notes.\n\n## Completion Checklist\n- [ ] Question answered.\n- [ ] Findings documented.\n- [ ] Decision or recommendation recorded.\n- [ ] Follow-up tickets created, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-004",
+    "source": "2026-10-01 Product daily",
+    "validation": "AC1 is traceable to the earlier meeting note and is the only criterion its source supports."
+  }
+}

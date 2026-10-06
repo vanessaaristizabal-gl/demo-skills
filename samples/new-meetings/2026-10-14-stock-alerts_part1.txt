@@ -1,0 +1,26 @@
+Meeting: Low-stock alerts and supplier orders – Bakery Brasa (fictional data)
+Date: 2026-10-14
+Recording part: 1 of 1 (00:00–14:10)
+Attendees: Marisol Quiroz (Kitchen manager, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer), Sofía Rojas (QA)
+
+[00:00:15] Julián: Marisol, you wanted to talk about running out of ingredients.
+[00:00:28] Marisol: Twice this month we ran out of butter in the middle of the morning rush and had to stop making croissants. I only notice when the shelf is empty.
+[00:01:05] Julián: What would help you notice earlier?
+[00:01:12] Marisol: An alert when an ingredient drops below a minimum I set. Per ingredient, because flour and saffron are not the same.
+[00:01:50] Andrés: Where would you see the alert?
+[00:01:58] Marisol: On the kitchen screen, the one with the order queue. A red badge is enough.
+[00:02:30] Sofía: And the minimum, who sets it?
+[00:02:36] Marisol: Me and my two assistants. Nobody else should change it.
+[00:03:20] Andrés: Stock is only updated when someone counts at the end of the day, so the alert would be a day late.
+[00:03:34] Marisol: Then the alert has to use the count we already enter, for now. I would love automatic counts from the supplier invoices, but that is a different project.
+[00:03:55] Julián: So for now: minimum per ingredient, red badge on the kitchen screen, based on the daily count. Agreed?
+[00:04:02] Marisol: Agreed.
+[00:05:40] Marisol: Another thing, the order screen lets customers buy a cake that needs 48 hours' notice with one day's notice. Yesterday we got an order for tomorrow.
+[00:05:55] Sofía: I can reproduce that. Choose the custom cake, pick tomorrow as the date and it lets you pay.
+[00:06:10] Andrés: It should block the date. The rule is 48 hours, we agreed that on the first of October.
+[00:06:20] Marisol: Please fix it this week, I had to call the customer.
+[00:06:28] Andrés: I will take it.
+[00:08:15] Marisol: Last one. Could the system order butter from the supplier by itself when it is low?
+[00:08:25] Andrés: That needs the supplier's API and a budget decision.
+[00:08:40] Julián: Let's not commit to that. Marisol, if you want it, ask Finance about the budget and we revisit.
+[00:08:50] Marisol: Fine, I will ask Ricardo.

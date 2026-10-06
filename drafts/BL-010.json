@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-010",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.812Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Task",
+    "summary": "Write the counter-staff instructions for the order status page",
+    "priority": "medium",
+    "description": "## Context\nProposed owner (from the meeting): Laura Peña.\n\nPhase: 1.\n\nCounter staff will update order statuses. Laura Peña will write their instructions once the status page exists.\n\n## Objective and Deliverable\nWritten instructions for counter staff on moving an order through Received, In the oven, Ready for pickup and Delivered with one tap.\n\n## Acceptance Criteria\n- AC1: **Instructions available** (Happy path) — The order status page is available to counter staff. Expected: written instructions explain how to move an order through Received, In the oven, Ready for pickup and Delivered.\n\n## References, Risks and Dependencies\nDepends on the order status page story.\n\n## Completion Checklist\n- [ ] Deliverable completed.\n- [ ] Acceptance criteria met.\n- [ ] Required validation completed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-010",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:07:02",
+    "validation": "AC1 is testable and traceable to 00:07:02. Nothing else is supported by the source."
+  }
+}

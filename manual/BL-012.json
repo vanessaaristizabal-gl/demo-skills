@@ -1,0 +1,18 @@
+{
+  "itemId": "BL-012",
+  "status": "draft",
+  "title": "Exporting the weekly sales report",
+  "audience": "Operations and Finance",
+  "summary": "Download the weekly sales report as a CSV file.",
+  "steps": [
+    "Request the weekly sales report export."
+  ],
+  "sees": [
+    "A CSV file with the weekly sales report is produced."
+  ],
+  "notes": [
+    "The columns are not specified yet. Operations is asking Finance which it needs."
+  ],
+  "source": "BL-012 · acceptance criteria AC1 · 2026-10-06 meeting",
+  "updatedAt": "2026-10-06"
+}

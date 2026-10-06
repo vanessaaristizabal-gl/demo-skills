@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-015",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.817Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Task",
+    "summary": "Prepare test cases for coupons and the order status page",
+    "priority": "medium",
+    "description": "## Context\nProposed owner (from the meeting): Sofía Rojas.\n\nPhase: 1.\n\nCoupons and the order status page both change this week.\n\n## Objective and Deliverable\nTest cases for the coupon rules and the order status page.\n\n## Acceptance Criteria\n- AC1: **Test cases ready** (Happy path) — The coupon and status page stories are defined. Expected: test cases cover one use per account, guest checkout, a retried payment and the four order statuses.\n\n## Completion Checklist\n- [ ] Deliverable completed.\n- [ ] Acceptance criteria met.\n- [ ] Required validation completed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-015",
+    "source": "2026-10-06 Coupons and order tracking – Camila Torres · 00:24:10",
+    "validation": "AC1 is testable and traceable to 00:24:10. The list of covered cases comes from the items agreed in this meeting."
+  }
+}

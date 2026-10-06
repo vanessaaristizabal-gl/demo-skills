@@ -1,0 +1,18 @@
+Meeting: Holiday menu and pre-orders – Bakery Brasa (fictional data)
+Date: 2026-10-15
+Recording part: 1 of 2 (00:00–10:45)
+Attendees: Paula Vega (Marketing, stakeholder), Camila Torres (Product), Andrés Gil (Developer), Laura Peña (Operations)
+
+[00:00:20] Camila: Paula, tell us what the holiday campaign needs from the app.
+[00:00:34] Paula: A seasonal menu section with the panettone and the holiday boxes, separate from the regular catalog.
+[00:01:10] Laura: How many products?
+[00:01:16] Paula: Five for now. I do not have the final list.
+[00:02:00] Camila: Do they appear for everyone from the first of November?
+[00:02:08] Paula: Yes, and disappear on the sixth of January.
+[00:02:40] Andrés: So there is a start date and an end date per product.
+[00:02:46] Paula: Exactly.
+[00:03:30] Laura: Pre-orders. People want to reserve a panettone before the first of December, and we cap how many we can bake.
+[00:03:45] Camila: A limit per product?
+[00:03:50] Laura: Per product per day. I will send the numbers.
+[00:04:30] Paula: When the limit is reached it should say "Sold out for this day" and not allow adding it to the cart.
+[00:05:10] Andrés: Understood. The date range and the limit come first, the sold-out message depends on them.

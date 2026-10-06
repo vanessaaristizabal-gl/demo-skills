@@ -1,0 +1,21 @@
+{
+  "itemId": "BL-018",
+  "status": "draft",
+  "title": "Low-stock alerts on the kitchen screen",
+  "audience": "Kitchen manager and kitchen assistants",
+  "summary": "The kitchen screen shows a red badge when an ingredient is below the minimum set for it.",
+  "steps": [
+    "Set a minimum for each ingredient."
+  ],
+  "sees": [
+    "A red badge on the kitchen screen for each ingredient whose daily count is below its minimum.",
+    "Each minimum applies only to the ingredient it was set for."
+  ],
+  "notes": [
+    "Only the kitchen manager and her two assistants can change a minimum.",
+    "The alert uses the daily count already entered, so it can be a day late.",
+    "Where and how a minimum is set is not specified yet."
+  ],
+  "source": "BL-018 · acceptance criteria AC1–AC3 · 2026-10-14 meeting",
+  "updatedAt": "2026-10-14"
+}

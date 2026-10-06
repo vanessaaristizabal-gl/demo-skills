@@ -1,0 +1,19 @@
+{
+  "itemId": "BL-009",
+  "status": "draft",
+  "title": "Following your order",
+  "audience": "Customers",
+  "summary": "Open the status page for your order to see where it is.",
+  "steps": [
+    "Open the status page for your order."
+  ],
+  "sees": [
+    "The page shows one of four statuses: Received, In the oven, Ready for pickup or Delivered.",
+    "The status changes when the counter staff update it."
+  ],
+  "notes": [
+    "Notifications by email or SMS are not part of this release. The channel is still undecided."
+  ],
+  "source": "BL-009 · acceptance criteria AC1–AC2 · 2026-10-06 meeting",
+  "updatedAt": "2026-10-06"
+}

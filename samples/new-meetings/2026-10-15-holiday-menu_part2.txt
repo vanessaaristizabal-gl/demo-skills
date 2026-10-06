@@ -1,0 +1,18 @@
+Meeting: Holiday menu and pre-orders – Bakery Brasa (fictional data)
+Date: 2026-10-15
+Recording part: 2 of 2 (10:45–19:30)
+Attendees: Paula Vega (Marketing, stakeholder), Camila Torres (Product), Andrés Gil (Developer), Laura Peña (Operations)
+
+[00:10:50] Camila: Back to the order of work. Paula, you said before that the seasonal section must be live on the first of November.
+[00:11:00] Paula: Yes, but pre-orders can come a bit later, two weeks later is fine.
+[00:11:20] Camila: So phase 1 is the seasonal section with dates, phase 2 the pre-order limit and the sold-out message.
+[00:11:30] Laura: That works for Operations.
+[00:12:40] Paula: Also, gift messages on the boxes. A card with a short text.
+[00:12:55] Andrés: Is there a character limit?
+[00:13:02] Paula: I think 150, but let me check with the printer.
+[00:13:20] Camila: Then we wait for the number before writing it down.
+[00:14:10] Laura: Something else: the delivery fee for the holiday boxes. Do they pay it?
+[00:14:20] Camila: Nobody has decided. Paula, can you ask the owner?
+[00:14:28] Paula: I will ask this week.
+[00:15:30] Andrés: One technical risk: if three people add the last panettone at the same moment, we could oversell. We should lock the stock when it goes into the cart.
+[00:15:45] Camila: Agreed, include it in the pre-order limit work.

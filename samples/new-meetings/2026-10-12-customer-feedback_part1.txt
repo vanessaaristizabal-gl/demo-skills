@@ -1,0 +1,26 @@
+Meeting: Customer feedback and notifications – Bakery Brasa (fictional data)
+Date: 2026-10-12
+Recording part: 1 of 1 (00:00–16:30)
+Attendees: Paula Vega (Marketing, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer), Sofía Rojas (QA)
+
+[00:00:18] Julián: Paula, you asked for this meeting. Tell us what you are looking for.
+[00:00:30] Paula: I do not know what customers think of us after they receive the order. Right now I only know when somebody complains on Instagram, and by then it is too late.
+[00:01:10] Julián: So you would like to ask them directly.
+[00:01:14] Paula: Yes. Something short, after the order arrives. Stars, one to five, and a space to write if they want.
+[00:02:00] Sofía: Every order, or only some?
+[00:02:08] Paula: Every delivered order, but only once per order of course. And not too fast, maybe a few hours later, so they have eaten the bread.
+[00:02:40] Andrés: How do they receive it, email or in the app?
+[00:02:50] Paula: I think email. Although... honestly I am not sure. If we also notify them when the order is ready for pickup, maybe it should be the same channel. I need to ask my team.
+[00:03:30] Julián: Then we leave the channel open and you come back to us.
+[00:03:36] Paula: Yes.
+[00:04:20] Paula: Will the reviews be public on the website?
+[00:04:28] Julián: Do you want that?
+[00:04:33] Paula: No, not now. Private. First I want to read them and see what they say.
+[00:06:10] Sofía: Can I bring something up? In QA I noticed the confirmation emails show the pickup time two hours off. A customer picks 10:00 and the email says 08:00.
+[00:06:25] Andrés: That sounds like a time zone problem in the email template. I did not know.
+[00:06:35] Paula: Oh, that is serious, people arrive at the wrong time. Please fix that first, before anything new.
+[00:06:50] Julián: So the time zone problem goes first, the feedback after.
+[00:07:00] Paula: Yes. The feedback I would like before the holiday campaign starts, early November.
+[00:09:30] Paula: One more idea, a loyalty program with points. But I have no details yet, it is just an idea.
+[00:09:42] Julián: Then we do not write anything down now. When you have details we talk.
+[00:09:48] Paula: Fine.

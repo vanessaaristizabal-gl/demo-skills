@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backlog from Meetings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: header + tabs; Backlog table in the Client Requested column order; Meeting notes in the GIP page order; ticket draft opens as a side panel. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #1a2330; --muted: #5a6776; --line: #dce2ea;
+  --accent: #0f766e; --accent-ink: #ffffff; --accent-soft: #ddf2ef;
+  --hi-fg: #a8261c; --hi-bg: #fde9e7; --mid-fg: #8a5508; --mid-bg: #fcefd3; --lo-fg: #335b8c; --lo-bg: #e3edf8;
+  --shadow: 0 8px 28px rgba(20,30,45,.18);
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141b; --surface: #151d26; --ink: #e5ebf2; --muted: #93a1b1; --line: #26313d;
+    --accent: #3fc1b3; --accent-ink: #04201c; --accent-soft: #12332f;
+    --hi-fg: #ff9d93; --hi-bg: #3a1b18; --mid-fg: #f0c470; --mid-bg: #352810; --lo-fg: #a2c4f2; --lo-bg: #172a42;
+    --shadow: 0 8px 28px rgba(0,0,0,.5); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141b; --surface: #151d26; --ink: #e5ebf2; --muted: #93a1b1; --line: #26313d;
+  --accent: #3fc1b3; --accent-ink: #04201c; --accent-soft: #12332f;
+  --hi-fg: #ff9d93; --hi-bg: #3a1b18; --mid-fg: #f0c470; --mid-bg: #352810; --lo-fg: #a2c4f2; --lo-bg: #172a42;
+  --shadow: 0 8px 28px rgba(0,0,0,.5); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.5 var(--font-body); padding-inline: 16px; padding-block: 20px 48px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.top { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between; }
+.top h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+.top p { margin: 2px 0 0; color: var(--muted); max-width: 70ch; }
+.tag { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); margin-left: 8px; vertical-align: middle; }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; padding: 7px 12px; cursor: pointer; font-weight: 500; }
+.btn:hover:not(:disabled) { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn.small { padding: 3px 9px; font-size: 13px; white-space: nowrap; }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 20px; color: var(--muted); }
+.stats b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.status { min-height: 21px; color: var(--accent); font-weight: 500; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tabs button { border: 0; background: transparent; padding: 8px 14px; cursor: pointer; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; min-width: 0; }
+.panel > h2 { margin: 0; padding: 12px 14px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.filters { display: flex; gap: 6px; }
+.filters button { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 2px 10px; cursor: pointer; font-size: 12px; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--muted); }
+.filters button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 1290px; }
+th { text-align: left; font-size: 12px; font-weight: 500; color: var(--muted); padding: 8px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.mono, .mono { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+td.clamp > div { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; max-width: 34ch; }
+td.name { min-width: 220px; font-weight: 500; }
+td.name .linkbtn { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font-weight: 500; color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+td.name .linkbtn:hover { text-decoration-color: var(--accent); }
+.type, .chip { font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; white-space: nowrap; display: inline-block; }
+.chip { border-radius: 999px; border: 0; background: var(--accent-soft); color: var(--accent); font-weight: 500; font-size: 11px; padding: 1px 8px; }
+.chip.wait { background: var(--mid-bg); color: var(--mid-fg); }
+.chip.dummy { background: var(--lo-bg); color: var(--lo-fg); }
+.prio { font-size: 12px; font-weight: 500; border-radius: 4px; padding: 1px 7px; }
+.prio.high { background: var(--hi-bg); color: var(--hi-fg); } .prio.medium { background: var(--mid-bg); color: var(--mid-fg); } .prio.low { background: var(--lo-bg); color: var(--lo-fg); }
+.new { margin-left: 8px; font-size: 11px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; }
+.key { font-family: var(--font-mono); font-size: 12px; background: var(--accent-soft); color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 2px 7px; text-decoration: none; display: inline-block; }
+.srcbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); cursor: pointer; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+.addbtn { margin: 10px 14px; }
+.form { display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+.form textarea { width: 100%; min-height: 220px; font: 12px/1.55 var(--font-mono); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px; resize: vertical; }
+.form input[type=text], .form input[type=date] { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
+tr.hl td { background: var(--accent-soft); box-shadow: inset 0 1px 0 var(--accent), inset 0 -1px 0 var(--accent); }
+.empty { padding: 24px 14px; color: var(--muted); }
+.cols { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 920px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.mlist { display: flex; flex-direction: column; }
+.mlist button { text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 10px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 3px; }
+.mlist button:last-child { border-bottom: 0; }
+.mlist button[aria-current="true"] { background: var(--accent-soft); }
+.page { padding: 16px 20px 22px; max-width: 920px; }
+.page h3 { margin: 0 0 14px; font-size: 19px; font-weight: 600; text-wrap: balance; }
+.page h4 { margin: 20px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.page ul { margin: 0; padding-left: 18px; } .page li { margin: 3px 0; }
+.page table { min-width: 0; }
+.page .tablewrap { border: 1px solid var(--line); border-radius: 6px; }
+.page td, .page th { padding: 8px 10px; }
+.page th { background: var(--bg); }
+.todo { list-style: none; padding-left: 0 !important; } .todo li::before { content: "☐ "; color: var(--muted); }
+.bench { margin-top: 18px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); }
+.bench b { color: var(--ink); }
+.tr { margin: 8px 0 0; white-space: pre-wrap; font: 12px/1.55 var(--font-mono); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px; max-height: 260px; overflow: auto; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; padding: 14px; margin: 0; list-style: none; }
+.steps li { border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+.steps li.gate { border: 2px solid var(--accent); background: var(--accent-soft); }
+.steps b { font-weight: 600; } .steps span { color: var(--muted); }
+.log { display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 8px; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.log:last-child { border-bottom: 0; } .log .d { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.backdrop { position: fixed; inset: 0; background: rgba(10,15,22,.45); z-index: 10; }
+.sheet { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--surface); border-left: 1px solid var(--line); box-shadow: var(--shadow); z-index: 11; display: flex; flex-direction: column; }
+.sheet header { padding: 14px 16px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: start; }
+.sheet h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.sheet .body { padding: 14px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; flex: 1; min-width: 0; }
+.sheet footer { padding: 12px 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px; }
+.note { background: var(--mid-bg); color: var(--mid-fg); border-radius: 6px; padding: 8px 12px; font-size: 13px; }
+.note.ok { background: var(--accent-soft); color: var(--accent); }
+.field label, .lbl { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+.field input, .field select { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
+.field p { margin: 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.md { border: 1px solid var(--line); border-radius: 6px; padding: 4px 12px 10px; background: var(--bg); }
+.md h5 { margin: 12px 0 4px; font-size: 13px; } .md p { margin: 3px 0; } .md ul, .md ol { margin: 3px 0; padding-left: 20px; } .md li { margin: 2px 0; }
+.md ul.chk { list-style: none; padding-left: 0; } .md ul.chk li::before { content: "☐ "; color: var(--muted); }
+.md code { font-family: var(--font-mono); font-size: 12px; }
+.src { font: 12px/1.55 var(--font-mono); white-space: pre-wrap; margin: 0; }
+.diagram { padding: 14px; overflow-x: auto; }
+.diagram svg { display: block; min-width: 720px; width: 100%; height: auto; }
+.n-box { fill: var(--surface); stroke: var(--ink); stroke-width: 1.25; }
+.n-box.live { stroke: var(--accent); }
+.n-box.plan { stroke: var(--muted); stroke-dasharray: 5 4; }
+.n-box.gate { stroke: var(--accent); stroke-width: 3; fill: var(--accent-soft); }
+.n-box.back { stroke-width: .75; opacity: .7; }
+.n-title { font: 600 13px var(--font-body); fill: var(--ink); }
+.n-sub { font: 400 11px var(--font-body); fill: var(--muted); }
+.n-badge { fill: var(--accent); }
+.n-badge-t { font: 600 10px var(--font-mono); fill: var(--accent-ink); text-anchor: middle; }
+.edge { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.edge.dash { stroke-dasharray: 4 4; }
+.arrowhead { fill: var(--muted); }
+.lbl-svg { font: 400 11px var(--font-body); fill: var(--muted); text-anchor: middle; }
+.bar { fill: var(--bg); stroke: var(--line); stroke-width: 1.25; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0 14px 14px; color: var(--muted); font-size: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 22px; height: 12px; border-radius: 3px; border: 1.5px solid var(--accent); background: var(--surface); }
+.sw.plan { border-color: var(--muted); border-style: dashed; }
+.sw.gate { border-width: 3px; background: var(--accent-soft); }
+.concepts { list-style: none; margin: 0; padding: 4px 0; }
+.concepts li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.concepts li:last-child { border-bottom: 0; }
+.concepts .nb { font-family: var(--font-mono); font-size: 11px; font-weight: 600; background: var(--accent); color: var(--accent-ink); border-radius: 999px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+.concepts b { font-weight: 600; }
+.concepts p { margin: 2px 0 0; color: var(--muted); }
+.next { margin: 0; padding: 10px 14px 12px 32px; color: var(--muted); }
+.next li { margin: 6px 0; }
+.next b { color: var(--ink); font-weight: 600; }
+.cols2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; align-items: start; }
+@media (max-width: 920px) { .cols2 { grid-template-columns: minmax(0,1fr); } }
+.deck { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; display: flex; flex-direction: column; min-width: 0; }
+.slides { padding: 28px clamp(16px, 4vw, 44px); min-height: 460px; }
+.slide h2 { margin: 6px 0 14px; font-size: clamp(22px, 3vw, 30px); font-weight: 600; letter-spacing: -.01em; text-wrap: balance; max-width: 26ch; }
+.slide .eyebrow { font: 500 11px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+.slide p, .slide li { max-width: 68ch; font-size: 15px; }
+.slide ul, .slide ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.slide .lead { font-size: 17px; color: var(--muted); max-width: 52ch; }
+.slide .goal { margin-top: 18px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; }
+.slide .two { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 20px; }
+@media (max-width: 760px) { .slide .two { grid-template-columns: minmax(0,1fr); } }
+.slide h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.slide .three { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+@media (max-width: 760px) { .slide .three { grid-template-columns: minmax(0,1fr); } }
+.slide .steps { padding: 0; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.slide .tablewrap { border: 1px solid var(--line); border-radius: 6px; }
+.slide table { min-width: 640px; } .slide td, .slide th { font-size: 13px; }
+.deckbar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.dots { display: flex; gap: 6px; flex: 1; justify-content: center; }
+.dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 1px solid var(--muted); background: transparent; cursor: pointer; }
+.dots button[aria-current="true"] { background: var(--accent); border-color: var(--accent); }
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; font: 12.5px/1.5 var(--font-mono); }
+.tree ul { margin-left: 10px; padding-left: 14px; border-left: 1px solid var(--line); }
+.tree li { padding: 3px 0; }
+.tree b { color: var(--ink); font-weight: 500; }
+.tree .d { display: block; color: var(--muted); font: 12.5px/1.45 var(--font-body); margin-left: 0; max-width: 58ch; }
+.who { font: 500 10.5px var(--font-mono); text-transform: uppercase; letter-spacing: .05em; border-radius: 4px; padding: 1px 6px; margin-left: 6px; white-space: nowrap; font-family: var(--font-mono); }
+.who.you { background: var(--lo-bg); color: var(--lo-fg); } .who.page { background: var(--mid-bg); color: var(--mid-fg); } .who.claude { background: var(--accent-soft); color: var(--accent); } .who.jira { background: var(--hi-bg); color: var(--hi-fg); }
+.flow { list-style: none; margin: 0; padding: 4px 0; counter-reset: s; }
+.flow li { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.flow li:last-child { border-bottom: 0; }
+.flow li::before { counter-increment: s; content: counter(s); font: 600 11px var(--font-mono); background: var(--accent); color: var(--accent-ink); border-radius: 999px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+.flow li.gate::before { outline: 3px solid var(--accent-soft); }
+.flow p { margin: 3px 0 0; color: var(--muted); } .flow .f { font: 12px var(--font-mono); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+.anat { padding: 10px 14px 14px; color: var(--muted); } .anat b { color: var(--ink); }
+.terms { margin: 0 14px 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.terms div { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.terms dt { font-weight: 600; margin-bottom: 2px; } .terms dd { margin: 0; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .sheet { animation: slide .18s ease-out; } @keyframes slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Backlog from meetings <span class="tag">fictional data</span></h1>
+      <p>Bakery Brasa, an online ordering app. Transcripts become meeting notes, meeting notes become backlog items, and an approved item becomes a Jira ticket.</p>
+    </div>
+    <button class="btn primary" id="syncBtn" type="button">Process transcripts</button>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+
+  <div class="tabs" role="tablist" aria-label="Views">
+    <button type="button" role="tab" id="t-backlog" aria-selected="true" data-tab="backlog">Backlog</button>
+    <button type="button" role="tab" id="t-notes" aria-selected="false" data-tab="notes">Meeting notes</button>
+    <button type="button" role="tab" id="t-manual" aria-selected="false" data-tab="manual">Manual</button>
+    <button type="button" role="tab" id="t-how" aria-selected="false" data-tab="how">Architecture</button>
+    <button type="button" role="tab" id="t-struct" aria-selected="false" data-tab="struct">Structure</button>
+    <button type="button" role="tab" id="t-deck" aria-selected="false" data-tab="deck">Presentation</button>
+  </div>
+
+  <section class="panel" id="v-backlog" aria-labelledby="t-backlog">
+    <h2><span>Backlog</span>
+      <span class="filters" role="group" aria-label="Filter by ticket">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="open" aria-pressed="false">No ticket</button>
+        <button type="button" data-f="done" aria-pressed="false">With ticket</button>
+      </span></h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Backlog Item</th><th>Area</th><th>Description</th><th>Source/Meeting</th><th>Jira Ticket</th><th>Manual</th><th>Notes</th><th>Development Notes</th><th>Phase</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <div class="empty" id="empty" hidden>No items match this filter.</div>
+  </section>
+
+  <div class="cols" id="v-notes" role="tabpanel" aria-labelledby="t-notes" hidden>
+    <section class="panel"><h2><span>Meetings</span></h2><div class="mlist" id="mlist"></div></section>
+    <section class="panel"><div class="page" id="mpage"></div></section>
+  </div>
+
+  <div class="cols" id="v-manual" role="tabpanel" aria-labelledby="t-manual" hidden>
+    <section class="panel"><h2><span>Manual sections</span></h2><div class="mlist" id="manlist"></div></section>
+    <section class="panel"><div class="page" id="manpage"></div></section>
+  </div>
+
+  <div id="v-struct" role="tabpanel" aria-labelledby="t-struct" hidden style="display:flex;flex-direction:column;gap:14px">
+    <section class="panel"><h2><span>Folder structure</span><span class="mono" style="text-transform:none;letter-spacing:0">use one harness, not both at once</span></h2>
+      <p class="anat" style="padding-bottom:0"><b>What the tags mean.</b> Each tag says <b>who creates or changes the files</b> in that place, so you can see where every piece of data comes from. <span class="who you">you</span> you write it by hand. <span class="who page">page</span> the web page saves it when you click. <span class="who claude">assistant</span> Claude Code or Codex writes it when you ask. The page never calls a model or Jira, so the handoffs between <span class="who page">page</span> and <span class="who claude">assistant</span> are files you can open.</p>
+      <div class="cols2" style="padding:12px 14px">
+        <div><h3 class="mono" style="margin:0 0 6px;font-size:12px;color:var(--muted)">VIA CLAUDE CODE</h3><ul class="tree">
+          <li><b>CLAUDE.md</b> <span class="who you">you</span><span class="d">Read by Claude Code when the folder opens: how to start, the pipeline (what runs in sequence and in parallel) and what each phrase means.</span></li>
+          <li><b>.claude/skills/</b><span class="d">Claude Code loads the skills from here. Its inbox watcher is a background command written in CLAUDE.md, so there is no script.</span>
+            <ul>
+              <li><b>meeting-notes/</b><span class="d">SKILL.md</span></li>
+              <li><b>ticket-writer/</b><span class="d">SKILL.md + references/ (templates, acceptance criteria)</span></li>
+              <li><b>manual-writer/</b><span class="d">SKILL.md</span></li>
+            </ul></li>
+        </ul></div>
+        <div><h3 class="mono" style="margin:0 0 6px;font-size:12px;color:var(--muted)">VIA CODEX</h3><ul class="tree">
+          <li><b>AGENTS.md</b> <span class="who you">you</span><span class="d">Read by Codex: demo startup, active-session inbox watching, the same pipeline (sequence, then two parallel steps), consecutive BL- IDs and Jira tickets in English.</span></li>
+          <li><b>.agents/skills/</b><span class="d">Codex loads the skills from here.</span>
+            <ul>
+              <li><b>meeting-notes/</b><span class="d">SKILL.md + agents/openai.yaml + references/local-app.md + scripts/watch-inbox.mjs (read-only watcher for the active Codex turn; extraction also starts the parallel stage)</span></li>
+              <li><b>ticket-writer/</b><span class="d">SKILL.md + agents/openai.yaml + references/ (local-app incl. the drafts/ file contract, templates, acceptance criteria)</span></li>
+              <li><b>manual-writer/</b><span class="d">SKILL.md + agents/openai.yaml + references/local-app.md</span></li>
+            </ul></li>
+        </ul></div>
+      </div>
+      <div class="anat" style="padding-top:0">The two skill folders are <b>independent copies</b>: each harness reads only its own, so changing a skill means changing it in both. The skills did not turn into agents: a <b>skill</b> is the know-how (a folder of instructions), an <b>agent</b> is Claude Code or Codex running it. The pipeline only decides which skill each agent reads, and when. The Codex copies add <span class="mono">agents/openai.yaml</span> (its display name and default prompt) and a <span class="mono">local-app.md</span> contract that spells out the file formats.</div>
+    </section>
+
+    <div class="cols2">
+      <section class="panel"><h2><span>Shared by both</span></h2>
+        <div style="padding:12px 14px"><ul class="tree">
+          <li><b>app/</b> <span class="who page">page</span><span class="d">server.mjs (no dependencies, no credentials), index.html, app.js, data.js, draft.js (builds a ticket draft from an item; used by the page and the server).</span></li>
+          <li><b>samples/</b> <span class="who you">you</span><span class="d">transcripts/ is the pre-loaded meeting; new-meetings/ holds transcripts in several scenarios (reversals, bug-only, Spanish, nothing agreed) to hand to the assistant.</span></li>
+          <li><b>inbox/</b> <span class="who page">page</span> <span class="who claude">assistant</span><span class="d">A meeting from the loaded file (title and date read from its header), then its note and backlog items once processed.</span></li>
+          <li><b>drafts/</b> <span class="who claude">assistant</span> <span class="who page">page</span><span class="d">Temporary: one ticket draft per item, only until its ticket exists. Rewritten when the item is edited, deleted after creation.</span></li>
+          <li><b>edits/</b> <span class="who page">page</span><span class="d">Your edits to backlog items, one overlay per item. The original item is never changed.</span></li>
+          <li><b>approvals/</b> <span class="who page">page</span> <span class="who claude">assistant</span><span class="d">An approved draft, then the Jira key once created.</span></li>
+          <li><b>manual/</b> <span class="who claude">assistant</span><span class="d">One file per backlog item, written automatically: a draft section, or “not needed” with its reason.</span></li>
+        </ul></div>
+        <div class="anat"><b>Skill or agent?</b> The skill is the folder; the agent is the assistant that reads it. Stage 1 is one agent running meeting-notes; stage 2 is two agents (or two steps) running manual-writer and the ticket-writer draft at the same time. <b>Anatomy of a skill.</b> A folder with a <span class="mono">SKILL.md</span>. Its name and description are always visible to the assistant, which decides when to use it. The body loads only when the skill is used, and <span class="mono">references/</span> files only when the body asks for them. That keeps the context small.</div>
+      </section>
+      <section class="panel"><h2><span>From the prompt to the ticket</span></h2>
+        <ol class="flow">
+          <li><div><b>Start.</b> <span class="who you">you</span> Open Claude Code or Codex in the folder and say “start the demo”.<p>The assistant reads <span class="f">CLAUDE.md</span> or <span class="f">AGENTS.md</span> and starts the local server.</p></div></li>
+          <li><div><b>Hand over the meeting.</b> <span class="who you">you</span> Give the assistant the transcript file in the chat, or load the file with + Add meeting note in the page. The file is the only input: title and date come from its header.<p>From the chat the assistant creates <span class="f">inbox/&lt;id&gt;.json</span> itself. From the page it is saved there as pending. Claude uses its session watcher; Codex's helper reports pending files during an active demo turn. If that Codex turn has ended, say “procesa las reuniones pendientes” to resume.</p></div></li>
+          <li><div><b>Extract.</b> <span class="who claude">assistant</span> The <b>meeting-notes</b> skill runs first.<p>It writes the note and the backlog items into the same file. The page shows them in a few seconds.</p></div></li>
+          <li><div><b>Fan out, in parallel.</b> <span class="who claude">assistant</span> <b>manual-writer</b> writes <span class="f">manual/</span> and the <b>ticket-writer</b> draft writes <span class="f">drafts/</span>, both for every new item, with no extra request.<p>Neither waits for the other: both depend only on the items.</p></div></li>
+          <li><div><b>Review and edit.</b> <span class="who you">you</span> <span class="who page">page</span> Open an item, Review draft.<p>You can edit the backlog item; saving rewrites its draft file so the ticket always follows the row. Nothing is created.</p></div></li>
+          <li class="gate"><div><b>Approve.</b> <span class="who you">you</span> Approve and create ticket.<p>The page saves <span class="f">approvals/&lt;id&gt;.json</span> as approved and the item is locked. Still nothing in Jira.</p></div></li>
+          <li><div><b>Create.</b> <span class="who you">you</span> <span class="who claude">assistant</span> <span class="who jira">jira</span> Say “create the approved tickets”.<p>The assistant checks the owner in Jira, creates the ticket in GIH with the Jira connector, and writes the key into the approval file and deletes the temporary draft.</p></div></li>
+          <li><div><b>See the result.</b> <span class="who page">page</span> The Backlog shows the key as a link to Jira.<p>The Manual tab and the Manual column were already filled in the parallel step.</p></div></li>
+        </ol>
+        <div class="anat">The page never calls a model or Jira. Everything that needs judgment or access goes through the assistant, and every handoff is a file you can open.</div>
+      </section>
+    </div>
+  </div>
+
+  <div id="v-how" role="tabpanel" aria-labelledby="t-how" hidden style="display:flex;flex-direction:column;gap:14px">
+    <section class="panel"><h2><span>How the flow is orchestrated</span></h2>
+      <div class="diagram"><svg viewBox="0 0 775 600" role="img" aria-labelledby="svgT svgD">
+          <title id="svgT">Multi-agent architecture with human approval</title>
+          <desc id="svgD">Transcripts reach a coordinator, which hands the work to extractors running in parallel. A validator checks the output and, if it fails, sends back the specific error for a retry. Once the backlog items exist, two agents run in parallel: a manual writer and a drafter that writes a temporary ticket draft. Editing a backlog item rewrites its draft. A person approves the draft, and only then a writer creates the ticket. An audit log records every step.</desc>
+          <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" class="arrowhead"/></marker></defs>
+
+          <path class="edge" d="M170 100 H212" marker-end="url(#ah)"/>
+          <path class="edge" d="M365 100 H407" marker-end="url(#ah)"/>
+          <path class="edge" d="M560 100 H602" marker-end="url(#ah)"/>
+          <path class="edge" d="M720 140 V197" marker-end="url(#ah)"/>
+          <path class="edge" d="M650 140 V160 H485 V197" marker-end="url(#ah)"/>
+          <path class="edge" d="M680 290 V367" marker-end="url(#ah)"/>
+          <path class="edge" d="M605 420 H563" marker-end="url(#ah)"/>
+          <path class="edge" d="M410 420 H368" marker-end="url(#ah)"/>
+          <path class="edge" d="M215 420 H173" marker-end="url(#ah)"/>
+          <path class="edge dash" d="M680 60 V34 H485 V57" marker-end="url(#ah)"/>
+          <path class="edge dash" d="M745 367 V292" marker-end="url(#ah)"/>
+          <path class="edge dash" d="M485 460 V518"/>
+          <path class="edge dash" d="M290 460 V518"/>
+          <text class="lbl-svg" x="582" y="26">retry with the specific error</text>
+          <text class="lbl-svg" x="560" y="156" style="text-anchor:start">in parallel</text>
+          <text class="lbl-svg" x="672" y="338" style="text-anchor:end">drafts/&lt;id&gt;.json</text>
+          <text class="lbl-svg" x="752" y="330" style="text-anchor:start;font-size:9px">edit</text>
+
+          <rect class="n-box live back" x="428" y="42" width="150" height="80" rx="8"/>
+          <rect class="n-box live back" x="419" y="51" width="150" height="80" rx="8"/>
+
+          <rect class="n-box live" x="20" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="36" cy="80" r="9"/><text class="n-badge-t" x="36" y="83.5">1</text>
+          <text class="n-title" x="52" y="84">Transcripts</text>
+          <text class="n-sub" x="34" y="106">the only input: a file</text>
+
+          <rect class="n-box plan" x="215" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="231" cy="80" r="9"/><text class="n-badge-t" x="231" y="83.5">2</text>
+          <text class="n-title" x="247" y="84">Coordinator</text>
+          <text class="n-sub" x="229" y="106">decides the split and</text>
+          <text class="n-sub" x="229" y="121">which subagent to use</text>
+
+          <rect class="n-box live" x="410" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="426" cy="80" r="9"/><text class="n-badge-t" x="426" y="83.5">3</text>
+          <text class="n-title" x="442" y="84">Extractors</text>
+          <text class="n-sub" x="424" y="106">meeting-notes skill,</text>
+          <text class="n-sub" x="424" y="121">one per part, parallel</text>
+
+          <rect class="n-box plan" x="605" y="60" width="150" height="80" rx="8"/>
+          <circle class="n-badge" cx="621" cy="80" r="9"/><text class="n-badge-t" x="621" y="83.5">4</text>
+          <text class="n-title" x="637" y="84">Validator</text>
+          <text class="n-sub" x="619" y="106">schema and rules;</text>
+          <text class="n-sub" x="619" y="121">structured errors</text>
+
+          <rect class="n-box live" x="410" y="200" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="426" cy="220" r="9"/><text class="n-badge-t" x="426" y="223.5">5a</text>
+          <text class="n-title" x="442" y="224">Manual writer</text>
+          <text class="n-sub" x="424" y="246">manual-writer skill</text>
+          <text class="n-sub" x="424" y="261">writes manual/&lt;id&gt;.json</text>
+          <text class="n-sub" x="424" y="276">never touches Jira</text>
+
+          <rect class="n-box live" x="605" y="200" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="621" cy="220" r="9"/><text class="n-badge-t" x="621" y="223.5">5b</text>
+          <text class="n-title" x="637" y="224">Drafter</text>
+          <text class="n-sub" x="619" y="246">ticket-writer skill,</text>
+          <text class="n-sub" x="619" y="261">temporary draft file;</text>
+          <text class="n-sub" x="619" y="276">cannot create tickets</text>
+
+          <rect class="n-box gate" x="605" y="370" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="621" cy="390" r="9"/><text class="n-badge-t" x="621" y="393.5">6</text>
+          <text class="n-title" x="637" y="394">Human approval</text>
+          <text class="n-sub" x="619" y="416">reviews, edits the item,</text>
+          <text class="n-sub" x="619" y="431">approves; then locked</text>
+
+          <rect class="n-box live" x="410" y="370" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="426" cy="390" r="9"/><text class="n-badge-t" x="426" y="393.5">7</text>
+          <text class="n-title" x="442" y="394">Writer</text>
+          <text class="n-sub" x="424" y="416">LLM in a harness +</text>
+          <text class="n-sub" x="424" y="431">Jira MCP, after approval</text>
+
+          <rect class="n-box live" x="215" y="370" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="231" cy="390" r="9"/><text class="n-badge-t" x="231" y="393.5">8</text>
+          <text class="n-title" x="247" y="394">Ticket created</text>
+          <text class="n-sub" x="229" y="416">key saved, temporary</text>
+          <text class="n-sub" x="229" y="431">draft file deleted</text>
+
+          <rect class="n-box live" x="20" y="370" width="150" height="90" rx="8"/>
+          <circle class="n-badge" cx="36" cy="390" r="9"/><text class="n-badge-t" x="36" y="393.5">9</text>
+          <text class="n-title" x="52" y="394">Backlog</text>
+          <text class="n-sub" x="34" y="416">shows the Jira link,</text>
+          <text class="n-sub" x="34" y="431">manual and draft status</text>
+
+          <rect class="bar" x="20" y="520" width="735" height="62" rx="8"/>
+          <text class="n-title" x="36" y="546">Audit log</text>
+          <text class="n-sub" x="36" y="566">Every step is recorded: what the agent read, what it proposed, who approved and what changed.</text>
+        </svg></div>
+      <div class="legend">
+        <span><i class="sw"></i>Exists in this demo</span>
+        <span><i class="sw plan"></i>Proposed design, not built yet</span>
+        <span><i class="sw gate"></i>Human control</span>
+      </div>
+      <dl class="terms" aria-label="Terms">
+        <div><dt>LLM</dt><dd>The model (Claude, GPT) that reads text and decides what to write or do next. On its own it cannot open files or call Jira.</dd></div>
+        <div><dt>Harness</dt><dd>The program around the model that gives it tools, permissions and context. Claude Code and Codex are harnesses.</dd></div>
+        <div><dt>Agent</dt><dd>The LLM doing a task through a harness: it decides, uses the harness's tools, reads the result and repeats until done. Example: Claude, inside Claude Code, processing a transcript.</dd></div>
+        <div><dt>Skill</dt><dd>A folder of instructions (SKILL.md) that an agent loads when a stage needs it: the know-how for one job, such as meeting-notes.</dd></div>
+        <div><dt>CLAUDE.md, AGENTS.md</dt><dd>A file the harness reads at the start of each session. It tells the agent how this project works.</dd></div>
+      </dl>
+      <div class="bench" style="margin:0 14px 14px"><b>In this demo.</b> The pre-loaded meeting shows a pre-computed result; a meeting added with <b>+ Add meeting note</b> is processed by the real skill. The ticket in step 7 is created for real in the Jira project GIH, only after approval, and tickets cannot be deleted. <b>Not drawn:</b> <span class="mono">manual-writer</span> branches off the backlog and drafts the manual section for each item (the Manual column); it never writes to Jira.</div>
+    </section>
+    <div class="cols2">
+      <section class="panel"><h2><span>Certification concept at each step</span></h2>
+        <p class="anat" style="padding-bottom:0">Tags map each step to the five domains of the Claude Certified Architect – Foundations exam: <b>D1</b> Agentic Architecture &amp; Orchestration, <b>D2</b> Tool Design &amp; MCP Integration, <b>D3</b> Claude Code Configuration &amp; Workflows, <b>D4</b> Prompt Engineering &amp; Structured Output, <b>D5</b> Context Management &amp; Reliability. The mapping is ours, from public exam guides.</p>
+        <ol class="concepts">
+          <li><span class="nb">1</span><div><b>Instructions and skills load on demand.</b> <span class="chip" title="D3 Claude Code">D3 Claude Code</span><p>CLAUDE.md or AGENTS.md is read at the start; a skill body loads only when its stage runs. The same pipeline is written once per harness.</p></div></li>
+          <li><span class="nb">2</span><div><b>The coordinator owns coverage.</b> <span class="chip" title="D1 Agentic">D1 Agentic</span><p>If something is missing even though the subagents did their job, the root cause is how the coordinator split and assigned the work. In this demo the assistant plays that role; a dedicated coordinator is still proposed.</p></div></li>
+          <li><span class="nb">3</span><div><b>Parallel work, labeled context, a schema.</b> <span class="chip" title="D1 Agentic">D1 Agentic</span> <span class="chip" title="D4 Prompts &amp; output">D4 Prompts &amp; output</span> <span class="chip" title="D5 Context &amp; reliability">D5 Context &amp; reliability</span><p>Notes are independent, so they run at the same time and each extractor receives only its own. Every item travels with its source (note, date, timestamp), and the item shape is fixed so later stages can rely on it.</p></div></li>
+          <li><span class="nb">4</span><div><b>Structured errors and informed retries.</b> <span class="chip" title="D2 Tools &amp; MCP">D2 Tools &amp; MCP</span> <span class="chip" title="D5 Context &amp; reliability">D5 Context &amp; reliability</span><p>A failure goes back to the extractor with the specific error, not a bare try again. Jira already does this for us: creating GIH-1488 first failed with the exact missing fields, and we asked the user instead of inventing values.</p></div></li>
+          <li><span class="nb">5</span><div><b>Fan out after a shared dependency, restrict with permissions.</b> <span class="chip" title="D1 Agentic">D1 Agentic</span> <span class="chip" title="D2 Tools &amp; MCP">D2 Tools &amp; MCP</span><p>5a and 5b need only the items, so they run at the same time. The Drafter is never given the create-ticket tool (allowedTools). If you do not want it to use the hammer, do not hand it the hammer.</p></div></li>
+          <li><span class="nb">6</span><div><b>Human oversight before an external effect.</b> <span class="chip" title="D1 Agentic">D1 Agentic</span> <span class="chip" title="D5 Context &amp; reliability">D5 Context &amp; reliability</span><p>Creating a ticket changes someone else's system. Nothing is written until a person approves, and the person can correct the draft; edits rewrite it and approval locks it.</p></div></li>
+          <li><span class="nb">7</span><div><b>Idempotency and traceability.</b> <span class="chip" title="D5 Context &amp; reliability">D5 Context &amp; reliability</span><p>The approval file carries the Jira key, so the same item is never created twice. The audit log makes it possible to rebuild who proposed and who approved.</p></div></li>
+        </ol>
+        <div class="anat"><b>Coverage today.</b> Real: D3 (project instructions, skills, background watcher), D4 (skills with templates and a fixed item schema), D2 (the Jira MCP and its structured errors). Partial: D1 (sequence plus a parallel fan-out run by one assistant; coordinator, validator and retry loop are not built) and D5 (provenance, idempotency and human escalation exist; there is no handling of transcripts that exceed the context window).</div></section>
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <section class="panel"><h2><span>Activity log</span></h2><div id="audit"></div></section>
+        <section class="panel"><h2><span>Next steps for the dashed parts</span></h2>
+          <ol class="next">
+            <li><b>Source:</b> a Zoom connector over MCP supplies transcripts and summaries, tested only with a self-recorded meeting that has made-up content.</li>
+            <li><b>Coordinator and extractors:</b> an Agent SDK script that starts one subagent per transcript part and returns JSON that follows the backlog schema.</li>
+            <li><b>Validator:</b> schema and business-rule checks, plus the acceptance-criteria check, that return the specific error for a retry.</li>
+            <li><b>Writer:</b> the only component holding the Jira tool, called after approval and keyed by backlog item so it never creates a ticket twice.</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+  </div>
+
+<section class="deck" id="v-deck" role="tabpanel" aria-labelledby="t-deck" hidden>
+    <div class="slides">
+
+      <article class="slide">
+        <div class="eyebrow">Demo · fictional data</div>
+        <h2>From meeting to Jira ticket, with a person in the middle</h2>
+        <p class="lead">Stakeholders say what they need. What was agreed becomes backlog items, tickets and manual sections, without retyping.</p>
+        <ol class="steps">
+          <li><b>1 · Transcripts</b></li>
+          <li><b>2 · meeting-notes</b><span>Note and items</span></li>
+          <li><b>3 · Backlog</b><span>With source and phase</span></li>
+          <li><b>4 · ticket-writer</b><span>Draft only</span></li>
+          <li class="gate"><b>5 · Approval</b><span>A person decides</span></li>
+          <li><b>6 · Writer</b><span>Creates in Jira</span></li>
+          <li><b>7 · manual-writer</b><span>Manual draft</span></li>
+        </ol>
+        <p class="goal">Nothing reaches Jira without a person's approval.</p>
+      </article>
+
+      <article class="slide">
+        <div class="eyebrow">Honest scope</div>
+        <h2>What is real, what is simulated, what it cannot do</h2>
+        <div class="three">
+          <div><h3>Real</h3><ul>
+            <li>The skills run when you add a meeting.</li>
+            <li>Drafts follow the team's templates and acceptance-criteria rules.</li>
+            <li>The ticket is created in GIH after approval.</li>
+          </ul></div>
+          <div><h3>Simulated</h3><ul>
+            <li>The pre-loaded meeting result.</li>
+            <li>The Coordinator and the Validator.</li>
+            <li>People, company and BAK tickets are made up.</li>
+          </ul></div>
+          <div><h3>Limits</h3><ul>
+            <li>It lives inside a Claude Code session: one user, session open.</li>
+            <li>Extraction and ticket type are model judgment, so a person reviews each draft.</li>
+            <li>Tickets cannot be deleted. GIH only has Task, Epic and Subtask.</li>
+          </ul></div>
+        </div>
+      </article>
+
+      <article class="slide">
+        <div class="eyebrow">Beyond the harness</div>
+        <h2>As a service: the same flow with a coordinator</h2>
+        <div class="tablewrap"><table>
+          <thead><tr><th></th><th>Today, in the harness</th><th>As a service (Claude Agent SDK)</th></tr></thead>
+          <tbody>
+            <tr><td><b>Runs as</b></td><td>A Claude Code session; a watcher wakes it</td><td>A service you host, started by an event such as a new transcript</td></tr>
+            <tr><td><b>Agents</b></td><td>Skills loaded from <code>.claude/skills</code></td><td>Subagents with the same text and read-only tools, one per transcript part, in parallel</td></tr>
+            <tr><td><b>Controls</b></td><td>No Validator; the Writer is Claude on request</td><td>A Validator in code that returns structured errors; a Writer holding only the Jira tool, blocked by a hook unless approved</td></tr>
+            <tr><td><b>Credentials</b></td><td>Your own Claude and Atlassian sessions</td><td>An API key and a Jira service account in a secret store</td></tr>
+          </tbody>
+        </table></div>
+        <p class="goal"><b>Build order:</b> Validator, coordinator, Writer guard, trigger. <b>What does not change:</b> the templates, the backlog structure and the approval before Jira.</p>
+      </article>
+
+    </div>
+    <div class="deckbar">
+      <button type="button" class="btn small" id="prevSlide">Previous</button>
+      <div class="dots" id="dots" role="group" aria-label="Slides"></div>
+      <span class="mono" id="deckCount"></span>
+      <button type="button" class="btn small primary" id="nextSlide">Next</button>
+    </div>
+  </section>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></aside>
+<script src="data.js"></script>
+<script src="draft.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

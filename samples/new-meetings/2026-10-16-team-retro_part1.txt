@@ -1,0 +1,16 @@
+Meeting: Team retrospective – Bakery Brasa (fictional data)
+Date: 2026-10-16
+Recording part: 1 of 1 (00:00–09:00)
+Attendees: Camila Torres (Product), Andrés Gil (Developer), Sofía Rojas (QA), Laura Peña (Operations)
+
+[00:00:20] Camila: Quick retro on the last sprint. What went well?
+[00:00:30] Sofía: The coupon release was smooth, no incidents.
+[00:00:45] Laura: The staff liked the order status page.
+[00:01:20] Andrés: Deployments took long on Friday, but I think it was a one-off.
+[00:02:10] Camila: What can we improve?
+[00:02:18] Sofía: I would like us to talk about more automated tests at some point.
+[00:02:30] Camila: Good idea, but not now. Let's see after the holidays.
+[00:03:00] Laura: Maybe a shared calendar for promos?
+[00:03:10] Camila: Maybe, someone could think about it. No owner, no date.
+[00:04:30] Andrés: Nothing else from me.
+[00:04:40] Camila: Then that's it, thanks everyone.

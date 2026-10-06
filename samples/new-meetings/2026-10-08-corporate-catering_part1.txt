@@ -1,0 +1,28 @@
+Meeting: Corporate catering orders – Bakery Brasa (fictional data)
+Date: 2026-10-08
+Recording part: 1 of 1 (00:00–18:40)
+Attendees: Marta Ruiz (Catering, stakeholder), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:00:20] Julián: Thanks for joining, Marta. Andrés is here so we can tell you early what is easy and what is not.
+[00:00:41] Marta: Sure. So, the problem. Companies call me to order breakfast for forty, fifty people, and today I take the order on WhatsApp and then type it into the app by hand. Half the time I get the quantities wrong.
+[00:01:30] Julián: What would you want instead?
+[00:01:38] Marta: That they order it themselves on the app, like any customer, but for big quantities. And they always ask for an invoice with the company's tax number, not a simple receipt.
+[00:02:20] Andrés: The invoice part, do they give you the company data every time?
+[00:02:28] Marta: Same companies, again and again, but the first time yes, I need their legal name and tax number.
+[00:03:10] Andrés: Then we could ask for those data at checkout and keep them in the customer account for next time.
+[00:03:20] Marta: Perfect, that's exactly it.
+[00:04:05] Julián: Is there a minimum notice? You cannot make fifty croissants in an hour.
+[00:04:14] Marta: Twenty-four hours at least. For more than a hundred pieces, two days. People forget this and then they get angry at me.
+[00:05:00] Julián: So the app should stop them ordering big quantities without that notice.
+[00:05:07] Marta: Yes, please. That would save me a lot of calls.
+[00:07:30] Marta: And my dream is that an office orders the same breakfast every Monday without doing anything.
+[00:07:45] Andrés: That one is a different size of work. Recurring orders means payments on a schedule, skipped weeks, holidays. I would not start there.
+[00:08:10] Julián: Marta, if we only had the big orders with invoice first, would that already help you?
+[00:08:18] Marta: Yes, it would. The recurring thing can wait, but I do want it eventually.
+[00:10:40] Marta: One more thing. These companies pay by bank transfer, not card.
+[00:10:52] Andrés: We only have card today. Bank transfer needs the finance team and I do not know their rules.
+[00:11:05] Julián: I will talk to finance about that before we promise anything.
+[00:13:00] Marta: The Christmas season starts the first week of December and that is when I get most corporate orders. I would love to have the big orders working before that.
+[00:13:20] Julián: Understood. We will plan for the big orders and the invoice data first, then we see about transfers.
+[00:15:30] Marta: Sorry, last thing, a small one. The catalog photos for the big trays are old. Could someone update them?
+[00:15:42] Julián: That is not for the app team, it is marketing's. I will pass it to Paula.

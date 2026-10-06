@@ -1,0 +1,6 @@
+{
+  "itemId": "BL-008",
+  "status": "na",
+  "reason": "Fixes a defect. The documented behaviour, one use per account, is in BL-007.",
+  "updatedAt": "2026-10-06"
+}

@@ -1,0 +1,6 @@
+{
+  "itemId": "BL-011",
+  "status": "na",
+  "reason": "Fixes a rounding difference. The manual does not change.",
+  "updatedAt": "2026-10-06"
+}

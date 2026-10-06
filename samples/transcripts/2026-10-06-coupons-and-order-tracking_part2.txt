@@ -1,0 +1,21 @@
+Meeting: Coupons and order tracking – Bakery Brasa (fictional data)
+Date: 2026-10-06
+Recording part: 2 of 2 (14:20–27:45)
+Attendees: Camila Torres (Product), Andrés Gil (Developer), Laura Peña (Operations), Sofía Rojas (QA)
+
+[00:14:22] Camila: Back. Sofía, you found something in the totals?
+[00:14:30] Sofía: Yes. On orders with a tip, the total is off by one cent in some cases. Example: subtotal 12.35 plus a 15% tip shows 14.20 on screen but 14.21 on the receipt.
+[00:15:05] Andrés: Rounding is done in two places. The screen rounds the tip, the receipt rounds the total.
+[00:15:20] Camila: Customers see two different numbers. That's a bug, high priority. Andrés, can you take it after the coupon fix?
+[00:15:33] Andrés: Yes.
+[00:15:45] Camila: Then the rounding fix is phase 1 too, because customers will see it during the promo.
+[00:17:10] Laura: Can we also get the weekly sales report as a CSV? Finance asks me every Monday.
+[00:17:25] Camila: Good, but not for the promo. Medium priority, Laura requests it, Andrés builds it when there's room.
+[00:19:00] Sofía: Back to coupons. Do loyalty points expire? Customers ask because the promo mentions points.
+[00:19:15] Camila: We don't know. Open question for finance, no owner yet besides me asking.
+[00:21:40] Laura: One risk from my side: the pickup status page will be slow if the counter has bad Wi-Fi. They already lose connection in the afternoon.
+[00:21:58] Camila: Noted as a risk. Mitigation idea: the page keeps showing the last known status when offline.
+[00:23:30] Camila: Decision: the order status page ships before any notification feature. We do not block it waiting for the email/SMS answer.
+[00:24:10] Sofía: I'll prepare test cases for coupons and the status page. That's me, medium priority.
+[00:25:00] Camila: Great. Recap of actions: Andrés fixes double application, then the rounding bug, Laura writes staff instructions, Sofía prepares test cases, I ask marketing about notifications and finance about points.
+[00:25:30] Camila: Thanks all. Stopping the recording.

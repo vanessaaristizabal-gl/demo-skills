@@ -1,0 +1,146 @@
+{
+  "id": "m1791325133095",
+  "status": "processed",
+  "createdAt": "2026-10-06T22:18:53.095659Z",
+  "processedAt": "2026-10-06T22:18:53.095659Z",
+  "title": "Refunds and order cancellations – Julián Mora",
+  "date": "2026-10-19",
+  "parts": [
+    {
+      "name": "2026-10-19-refund-policy_part1.txt",
+      "text": "Meeting: Refunds and order cancellations – Bakery Brasa (fictional data)\nDate: 2026-10-19\nRecording part: 1 of 1 (00:00–13:40)\nAttendees: Ricardo Solano (Finance, stakeholder), Laura Peña (Operations), Julián Mora (Business analyst), Andrés Gil (Developer)\n\n[00:00:15] Julián: Ricardo, Laura, today is about cancellations and refunds.\n[00:00:30] Laura: Today a customer who cancels calls us and we refund by hand. It happens about ten times a week.\n[00:01:10] Ricardo: I want customers to cancel from the app, but only before the bakery starts preparing the order.\n[00:01:25] Laura: Preparing means the status \"In the oven\".\n[00:01:40] Ricardo: Right. Before that they cancel and get the full refund automatically.\n[00:02:30] Andrés: Automatic to the same card?\n[00:02:36] Ricardo: Yes, the same card.\n[00:03:20] Ricardo: And after \"In the oven\", a partial refund of fifty percent.\n[00:03:35] Laura: No, that is not fair for a cake we have not decorated yet.\n[00:03:50] Ricardo: You are right. Forget the fifty percent. After \"In the oven\" no cancellation from the app, they call us.\n[00:04:05] Julián: So after \"In the oven\" the cancel option disappears. Confirmed?\n[00:04:12] Ricardo: Confirmed.\n[00:05:40] Laura: How long does the refund take to reach the card?\n[00:05:48] Andrés: It depends on the payment provider. I do not know the time.\n[00:06:00] Ricardo: Then find out. I want to tell customers a number of days.\n[00:06:10] Andrés: I will ask the provider and report back.\n[00:07:30] Ricardo: Also, every refund should appear in the daily cash close report.\n[00:07:45] Julián: That belongs to the cash close work from last week; we note it as a dependency, not as new work.\n[00:09:00] Laura: Gift cards, can they be refunded?\n[00:09:08] Ricardo: Not now. Let's leave gift cards out.\n"
+    }
+  ],
+  "meeting": {
+    "id": "m1791325133095",
+    "date": "2026-10-19",
+    "title": "Refunds and order cancellations – Julián Mora",
+    "participants": [
+      "Ricardo Solano (Finance, stakeholder)",
+      "Laura Peña (Operations)",
+      "Julián Mora (Business analyst)",
+      "Andrés Gil (Developer)"
+    ],
+    "goals": "Agree how customers cancel orders and receive refunds, and identify the provider information needed to explain refund timing.",
+    "topics": [
+      [
+        "00:00:15",
+        "Current cancellation process",
+        "Julián Mora",
+        "Laura explained that customers currently call Operations to cancel; refunds are issued manually about ten times a week."
+      ],
+      [
+        "00:01:10",
+        "Cancellation before preparation",
+        "Ricardo Solano",
+        "Customers may cancel in the app before the order reaches \"In the oven\" and receive a full automatic refund to the same card."
+      ],
+      [
+        "00:03:20",
+        "Cancellation after preparation starts",
+        "Ricardo Solano",
+        "Ricardo withdrew the proposed 50% refund. Once the order is \"In the oven\" or later, the cancel option disappears and customers call Operations."
+      ],
+      [
+        "00:05:40",
+        "Refund settlement time",
+        "Laura Peña",
+        "The time to reach the card is unknown and depends on the payment provider. Andrés agreed to ask the provider and report back so customers can be told a number of days."
+      ],
+      [
+        "00:07:30",
+        "Daily cash close report",
+        "Ricardo Solano",
+        "Refunds should appear in the daily cash close report. Julián identified this as a dependency on existing work from last week, not a new backlog item."
+      ],
+      [
+        "00:09:00",
+        "Gift card refunds",
+        "Laura Peña",
+        "Ricardo excluded gift cards from the current scope."
+      ]
+    ],
+    "actions": [
+      "**Unassigned:** Implement in-app cancellation before \"In the oven\", with a full automatic refund to the same card and no in-app cancellation once preparation starts.",
+      "**Andrés Gil:** Ask the payment provider how many days a refund takes to reach the card and report back."
+    ],
+    "decisions": [
+      "Customers may cancel from the app only before the order reaches \"In the oven\".",
+      "Eligible cancellations trigger a full automatic refund to the same card.",
+      "From \"In the oven\" onward, the cancel option disappears; customers call Operations.",
+      "The proposed 50% refund after preparation starts was withdrawn.",
+      "Refund reporting belongs to existing daily cash close work and is a dependency, not new work.",
+      "Gift cards are excluded from the current scope."
+    ],
+    "related": [
+      "Open question: How many days does a refund take to reach the card? Owner: Andrés Gil, asking the payment provider.",
+      "Dependency: Every refund must appear in the daily cash close report; this is covered by existing work from last week. Its ticket key is not specified.",
+      "Out of scope: Gift card refunds.",
+      "Withdrawn proposal: 50% partial refunds after \"In the oven\".",
+      "Open question: How cancellation and refund failures are handled is not specified; no failure behaviour was agreed.",
+      "Open question: The cancellation screen, option label and confirmation message are not specified."
+    ]
+  },
+  "items": [
+    {
+      "id": "BL-020",
+      "meeting": "m1791325133095",
+      "title": "Allow cancellation before preparation with a full automatic refund",
+      "type": "Story",
+      "area": "Orders · Cancellations and refunds",
+      "owner": "Unassigned",
+      "prio": "medium",
+      "phase": "N/A",
+      "ticket": null,
+      "dev": "",
+      "desc": "Customers can cancel from the app only before their order reaches \"In the oven\". Eligible cancellations trigger a full automatic refund to the same card. From \"In the oven\" onward, the cancel option disappears and customers call Operations. The proposed 50% refund was withdrawn; gift cards are excluded. Refund reporting is a dependency on the existing daily cash close work.",
+      "source": "2026-10-19 Refunds and order cancellations – Julián Mora · 00:01:10–00:02:36, 00:03:20–00:04:12, 00:07:30–00:07:45, 00:09:00–00:09:08",
+      "notes": "2026-10-19 — Allow cancellation before preparation: [Requested by: Ricardo Solano.] Suggested type: Story — customer-visible cancellation and refund behaviour. Implementation owner and phase were not assigned. The 50% refund proposal was withdrawn. Gift cards are out of scope.",
+      "ctx": "Customers currently call Operations to cancel orders, and refunds are issued manually about ten times a week. Finance agreed to allow eligible cancellations from the app, with preparation starting at \"In the oven\".",
+      "story": "As a customer, I want to cancel my order from the app before preparation starts and receive a full refund to the same card, so that I do not have to call Operations for an eligible cancellation.",
+      "ac": [
+        [
+          "Eligible cancellation and full refund",
+          "Happy path",
+          "A customer cancels an order from the app before its status reaches \"In the oven\"",
+          "the order is cancelled and a full refund is issued automatically to the same card"
+        ],
+        [
+          "Preparation has started",
+          "Negative case",
+          "An order has reached \"In the oven\" or a later status",
+          "the cancel option is not shown and the order cannot be cancelled from the app"
+        ]
+      ],
+      "validation": "AC1–AC2 are specific, observable and traceable to 00:01:10–00:02:36 and 00:03:50–00:04:12. They cover the agreed in-app cancellation, full automatic refund to the same card and cancellation restriction. No edge case, provider timing, failure handling or partial refund rule was invented; the source supports happy-path and negative cases only.",
+      "refs": "After \"In the oven\", customers call Operations; no support number or UI message was specified. Dependency: refund entries belong to existing daily cash close work (00:07:30–00:07:45); no ticket key was provided. Gift cards are out of scope. The 50% partial-refund proposal was withdrawn. Open question (Andrés Gil): provider settlement time in days. Cancellation controls, confirmation text and failure handling were not specified."
+    },
+    {
+      "id": "BL-021",
+      "meeting": "m1791325133095",
+      "title": "Determine how many days refunds take to reach the card",
+      "type": "Spike",
+      "area": "Payments · Refunds",
+      "owner": "Andrés Gil",
+      "prio": "medium",
+      "phase": "N/A",
+      "ticket": null,
+      "dev": "",
+      "desc": "Andrés Gil will ask the payment provider how many days refunds take to reach the card and report back, so Ricardo Solano can communicate a time to customers. The meeting did not establish a refund settlement time.",
+      "source": "2026-10-19 Refunds and order cancellations – Julián Mora · 00:05:40–00:06:10",
+      "notes": "2026-10-19 — Determine refund settlement time: [Requested by: Ricardo Solano.] Suggested type: Spike — an agreed investigation whose deliverable is the provider answer, not new refund behaviour. Andrés Gil agreed to ask the provider and report back.",
+      "ctx": "Laura asked how long the refund takes to reach the card. Andrés said the time depends on the payment provider and is currently unknown. Ricardo requested a number of days to tell customers.",
+      "question": "Determine how many days a refund takes to reach the card by asking the payment provider. Deliverable: the provider answer reported back so Finance can communicate the refund timeframe to customers.",
+      "ac": [
+        [
+          "Provider answer reported",
+          "Happy path",
+          "Andrés Gil has asked the payment provider about refund settlement time",
+          "the provider answer about how many days a refund takes to reach the card is reported back for customer communication"
+        ]
+      ],
+      "validation": "AC1 is specific, observable and traceable to 00:05:40–00:06:10. It covers the agreed provider inquiry and report-back deliverable. No refund duration, investigation deadline, edge case or negative-case requirement was invented; the source supports only this happy-path deliverable.",
+      "refs": "Open question (Andrés Gil): the payment provider refund settlement time is unknown. Do not promise a number of days until the provider answers. No investigation deadline was assigned."
+    }
+  ]
+}

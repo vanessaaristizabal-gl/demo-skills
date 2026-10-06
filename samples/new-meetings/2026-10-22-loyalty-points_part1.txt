@@ -1,0 +1,21 @@
+Meeting: Loyalty points follow-up – Bakery Brasa (fictional data)
+Date: 2026-10-22
+Recording part: 1 of 1 (00:00–09:20)
+Attendees: Paula Vega (Marketing, stakeholder), Ricardo Solano (Finance), Camila Torres (Product), Andrés Gil (Developer)
+
+[00:00:15] Camila: Ricardo, you had the answer about the points.
+[00:00:25] Ricardo: Yes. Points expire twelve months after they are earned.
+[00:00:40] Paula: And how do customers earn them? One point per currency unit spent.
+[00:00:55] Ricardo: Confirmed. One point per unit spent, on paid orders only, not on delivery fees.
+[00:01:30] Camila: And to redeem?
+[00:01:35] Paula: A hundred points give a discount of five currency units.
+[00:01:50] Ricardo: I need to check that with the owner before we commit to the hundred.
+[00:02:00] Camila: Then the redemption value is open. The earning rule and the expiry are closed.
+[00:03:00] Andrés: What do we build first?
+[00:03:08] Paula: Earning points, and a page where the customer sees their balance and when each batch expires.
+[00:03:25] Camila: Redeeming comes after Ricardo confirms the value.
+[00:04:10] Paula: I want the balance page before the holiday campaign.
+[00:04:20] Andrés: Understood. I would need to know if a cancelled order returns the points.
+[00:04:32] Ricardo: Good question. I think yes but I am not sure. I will find out.
+[00:05:30] Paula: Also a birthday bonus. But no details yet.
+[00:05:38] Camila: Not now, then.

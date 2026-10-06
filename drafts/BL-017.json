@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-017",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.818Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Ask customers for feedback after a delivered order",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nPhase: 2.\n\nMarketing only hears about complaints on Instagram, after the damage is done. She wants direct feedback and will read the reviews privately first.\n\n## User Story\nAs a customer, I want to rate my order after it arrives, so that the bakery learns what I thought of it.\n\n## Acceptance Criteria\n- AC1: **Request after delivery** (Happy path) — An order is delivered. Expected: the customer receives one request to rate it from one to five stars, a few hours later.\n- AC2: **Optional comment** (Happy path) — A customer opens the feedback request. Expected: they can give a star rating and may add a comment.\n- AC3: **Once per order** (Edge case) — A feedback request was already sent for a delivered order. Expected: no second request is sent for that order.\n- AC4: **Reviews are private** (Happy path) — A customer submits a review. Expected: the review is not shown on the website.\n\n## Business Rules\nSent for every delivered order, once per order, a few hours after delivery. Rating is one to five stars with an optional comment. Reviews are private and not shown on the website.\n\n## References, Risks and Dependencies\nOpen question (Paula Vega): which channel carries the request, email or in the app? Open question: how many hours after delivery? Deferred: loyalty program idea (00:09:30), no details.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-017",
+    "source": "2026-10-12 Customer feedback and notifications – Bakery Brasa · 00:00:30–00:04:33, 00:06:50–00:07:00",
+    "validation": "AC1–AC4 are testable and traceable to 00:01:14–00:04:33. The delay is not given in hours and the channel is open, so neither was invented; see the open questions."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "BL-018",
+  "status": "created",
+  "approvedAt": "2026-10-06T22:03:49.532Z",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Show a low-stock alert on the kitchen screen",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nButter ran out twice this month in the morning rush and croissants stopped. The kitchen manager only noticed when the shelf was empty.\n\n## User Story\nAs the kitchen manager, I want to be alerted when an ingredient falls below its minimum, so that I notice before it runs out.\n\n## Acceptance Criteria\n- AC1: **Ingredient below its minimum** (Happy path) — An ingredient's daily count is below the minimum set for it. Expected: the kitchen screen shows a red badge for that ingredient.\n- AC2: **Minimum per ingredient** (Happy path) — The kitchen manager or one of her assistants sets a minimum for an ingredient. Expected: the minimum applies to that ingredient only.\n- AC3: **Who can change a minimum** (Negative case) — A user who is not the kitchen manager or one of her two assistants tries to change a minimum. Expected: the minimum is not changed.\n\n## Business Rules\nThe minimum is set per ingredient. Only the kitchen manager and her two assistants can change it. The alert uses the daily count already entered.\n\n## References, Risks and Dependencies\nRisk: the alert is only as current as the end-of-day count and can be a day late. Deferred: automatic counts from supplier invoices (00:03:34) and automatic supplier orders (00:08:15), with no commitment.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-018",
+    "source": "2026-10-14 Low-stock alerts and supplier orders · 00:00:28–00:04:02",
+    "validation": "AC1–AC3 are testable and traceable to 00:01:12–00:03:55. No edge case was added because the source supports none; the badge wording and the number of assistants' accounts were not specified."
+  },
+  "key": "GIH-1488",
+  "url": "https://gorillalogic.atlassian.net/browse/GIH-1488",
+  "createdAt": "2026-10-06T22:04:54.590547Z"
+}

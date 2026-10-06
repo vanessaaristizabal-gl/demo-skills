@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-003",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:22.807Z",
+  "origin": "auto",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Story",
+    "summary": "Accept pastry orders only with 48 hours' notice",
+    "priority": "medium",
+    "description": "## Context\nType: Story (created as Task; this Jira project has no Story type).\n\nPastry orders need advance notice. Decided in the 2026-10-01 product daily.\n\n## User Story\nAs the bakery, I want pastry orders accepted only with 48 hours' notice, so that the rule agreed on 2026-10-01 is applied.\n\n## Acceptance Criteria\n- AC1: **Order with enough notice** (Happy path) — A customer places a pastry order with at least 48 hours' notice. Expected: the order is accepted.\n\n## References, Risks and Dependencies\nOpen question: what a customer sees when ordering with less notice.\n\n## Definition of Done\n- [ ] Acceptance criteria met.\n- [ ] Developer testing and sanity check completed.\n- [ ] Peer review approved.\n- [ ] QA validation approved.\n- [ ] Demo completed.\n- [ ] Documentation updated, if applicable.\n- [ ] Release status and evidence recorded.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-003",
+    "source": "2026-10-01 Product daily",
+    "validation": "AC1 is traceable to the earlier meeting note and is the only criterion its source supports."
+  }
+}

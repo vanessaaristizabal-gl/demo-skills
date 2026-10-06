@@ -1,0 +1,22 @@
+{
+  "itemId": "BL-017",
+  "status": "draft",
+  "title": "Rating your order",
+  "audience": "Customers",
+  "summary": "After your order is delivered you are asked to rate it from one to five stars and can add a comment.",
+  "steps": [
+    "Open the feedback request you receive after your order is delivered.",
+    "Give your order a rating from one to five stars.",
+    "Add a comment if you want to."
+  ],
+  "sees": [
+    "You receive one feedback request per delivered order, a few hours after delivery.",
+    "Your review is private; it is not shown on the website."
+  ],
+  "notes": [
+    "How the request reaches the customer (email or in the app) is not decided yet.",
+    "The exact delay after delivery is not specified yet; the meeting only said \"a few hours\"."
+  ],
+  "source": "BL-017 · acceptance criteria AC1–AC4 · 2026-10-12 meeting",
+  "updatedAt": "2026-10-12"
+}

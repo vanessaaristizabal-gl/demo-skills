@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meeting Notes to Backlog"
+  short_description: "Transcripts a notas y backlog en la app local"
+  default_prompt: "Usa $meeting-notes para procesar las reuniones pendientes en inbox/ y actualizar el backlog de la app."

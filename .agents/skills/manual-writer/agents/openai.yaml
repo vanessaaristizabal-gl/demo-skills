@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manual Section Writer"
+  short_description: "Items del backlog a secciones del manual de usuario"
+  default_prompt: "Usa $manual-writer para decidir y escribir las secciones del manual de los items que aún no tienen una en manual/."

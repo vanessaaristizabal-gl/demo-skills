@@ -1,0 +1,6 @@
+{
+  "itemId": "BL-019",
+  "status": "na",
+  "reason": "Fixes a defect. The 48-hour notice rule is already the documented behaviour; the fix only enforces it.",
+  "updatedAt": "2026-10-14"
+}

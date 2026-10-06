@@ -1,0 +1,23 @@
+{
+  "itemId": "BL-020",
+  "status": "draft",
+  "title": "Cancelación de pedidos y reembolso completo",
+  "audience": "Clientes",
+  "summary": "Puedes cancelar tu pedido desde la app antes de que alcance el estado \"In the oven\" y recibir un reembolso completo automático en la misma tarjeta.",
+  "steps": [
+    "Cancela tu pedido desde la app antes de que su estado alcance \"In the oven\"."
+  ],
+  "sees": [
+    "El pedido se cancela y se emite automáticamente un reembolso completo a la misma tarjeta.",
+    "Cuando el pedido alcanza \"In the oven\" o un estado posterior, la opción de cancelar deja de mostrarse y no puedes cancelarlo desde la app."
+  ],
+  "notes": [
+    "Cuando el pedido alcanza \"In the oven\", contacta a Operaciones por teléfono; la fuente no especifica un número de contacto.",
+    "Las tarjetas de regalo quedan fuera de este alcance.",
+    "El plazo para que el reembolso llegue a la tarjeta está pendiente de confirmación del proveedor de pagos.",
+    "La fuente no especifica la pantalla, la etiqueta de la opción de cancelar, el mensaje de confirmación ni el comportamiento ante errores.",
+    "Borrador previo al lanzamiento; pendiente de verificación en la aplicación antes de publicarse."
+  ],
+  "source": "BL-020 · AC1–AC2 · reunión 2026-10-19; decisiones de alcance 00:03:50–00:04:12 y 00:09:00–00:09:08.",
+  "updatedAt": "2026-10-06"
+}

@@ -1,0 +1,17 @@
+{
+  "itemId": "BL-016",
+  "status": "draft",
+  "updatedAt": "2026-10-06T21:44:23.013Z",
+  "origin": "edit",
+  "draft": {
+    "project": "GIH",
+    "issueType": "Task",
+    "intendedType": "Bug",
+    "summary": "Fix the pickup time shown in confirmation emails",
+    "priority": "high",
+    "description": "## Context\nType: Bug (created as Task; this Jira project has no Bug type).\n\nPhase: 1.\n\nFound by QA (Sofía Rojas). Andrés Gil suspects a time zone problem in the email template; not verified.\n\n## Steps to Reproduce\n1. Place an order and choose a pickup time of 10:00.\n2. Open the confirmation email.\n\n## Expected Behavior\nThe email shows the pickup time the customer chose (10:00).\n\n## Current Behavior\nThe email shows 08:00, two hours earlier.\n\n## Acceptance Criteria\n- AC1: **Pickup time in the email** (Happy path) — A customer chooses a pickup time of 10:00 and receives the confirmation email. Expected: the email shows 10:00.\n\n## References, Risks and Dependencies\nOpen question: is it only the email template or also other places that show the pickup time? Not discussed.\n\n## Completion Checklist\n- [ ] Fix completed.\n- [ ] Acceptance criteria met.\n- [ ] Fix verified in the environment where it failed.\n- [ ] Review and approval recorded.\n- [ ] Documentation updated, if applicable.\n\n## Completion Evidence\nPending — to be linked as it becomes available.",
+    "itemId": "BL-016",
+    "source": "2026-10-12 Customer feedback and notifications – Bakery Brasa · 00:06:10–00:07:00",
+    "validation": "AC1 is testable and traceable to 00:06:10–00:06:25. The source supports no edge or negative case."
+  }
+}

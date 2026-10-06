@@ -1,0 +1,25 @@
+Meeting: Delivery zones and fees – Bakery Brasa (fictional data)
+Date: 2026-10-09
+Recording part: 1 of 2 (00:00–11:50)
+Attendees: Laura Peña (Operations, stakeholder), Diego Fallas (Delivery partner), Julián Mora (Business analyst), Andrés Gil (Developer)
+
+[00:00:15] Julián: Let's start with what Laura sees every day, then Diego tells us what his drivers can really do.
+[00:00:40] Laura: Right now every delivery costs the same, no matter how far. We lose money on the far neighborhoods and we overcharge the close ones. Customers complain.
+[00:01:25] Julián: So you want the price of delivery to depend on where the customer lives.
+[00:01:32] Laura: Exactly. By neighborhood, not by kilometers, because nobody understands kilometers.
+[00:02:10] Diego: My drivers work in three areas. North, center and south. The center is the quickest, north is a bit longer and south is the far one.
+[00:02:45] Andrés: Could we keep a list of neighborhoods and tell which area each one belongs to?
+[00:02:55] Diego: I can send you the list. Around sixty neighborhoods.
+[00:03:20] Laura: And each area has its own fee. I will tell you the numbers, I have to confirm them with Ricardo first.
+[00:04:10] Julián: At checkout, the customer enters the address. What should happen if the neighborhood is not in any area?
+[00:04:22] Laura: Then we do not deliver there. It should say so clearly, and offer pickup in the shop.
+[00:05:15] Diego: Something that happens a lot: customers write the neighborhood wrong, or a nickname. "El Poblado Alto", things like that.
+[00:05:35] Andrés: We can show a list to pick from instead of free text. That avoids most mistakes.
+[00:05:42] Laura: Yes, better.
+[00:07:00] Laura: Also, the customer should see the delivery fee before paying, not after. Now they only find out in the last step and they leave.
+[00:07:20] Julián: So the fee appears as soon as they choose the neighborhood.
+[00:07:25] Laura: Yes.
+[00:09:30] Diego: One warning from my side. In the south we cannot deliver after seven in the evening, the roads are bad.
+[00:09:45] Julián: Do we have delivery times in the app today?
+[00:09:50] Andrés: Customers choose a time slot, yes. We would need slots that depend on the area.
+[00:10:05] Laura: That would be good, but it is not urgent. First the fees.
